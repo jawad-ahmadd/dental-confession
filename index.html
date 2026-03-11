@@ -3,125 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dental Confessions | Premium 3D Clinic</title>
+    <title>Dental Confessions | Premium 3D Dentistry</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; margin: 0; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; /* Deep Navy Night */ color: white; margin: 0; }
         
-        /* Premium Logo & Text Glow */
-        .logo-glow { text-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+        /* 1. Base Gradient for the entire hero section */
+        .hero-vibe {
+            position: relative;
+            background: #020617;
+            overflow: hidden;
+        }
+
+        /* 2. Agency-Style Moving Circles (The Vibe you want) */
+        .circle-decor {
+            position: absolute;
+            border: 1px solid rgba(59, 130, 246, 0.1); /* Subtle Blue Border */
+            border-radius: 50%;
+            pointer-events: none;
+        }
         
-        /* Sidebar Smooth Slide */
-        #sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Large Circle - Spinning slowly */
+        .circle-decor-lg {
+            width: 1400px; h-1400px;
+            top: -200px; left: -200px;
+            animation: orbit 60s linear infinite;
+        }
+        /* Medium Circle - Spinning faster in reverse */
+        .circle-decor-md {
+            width: 800px; h-800px;
+            bottom: -100px; right: -100px;
+            animation: orbit 40s linear infinite reverse;
+            border-color: rgba(99, 102, 241, 0.08); /* Indigo */
+        }
+
+        /* 3. Glowing Gradient for Text from Agency */
+        .text-glow {
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            background: linear-gradient(90deg, #3b82f6, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 4. Sidebar Smooth Toggle */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
         .sidebar-hidden { transform: translateX(100%); }
         .sidebar-visible { transform: translateX(0); }
-
-        /* Modern Nav Link Hover */
-        .nav-link { position: relative; transition: all 0.3s ease; }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            bottom: -4px; left: 0; background: linear-gradient(90deg, #3b82f6, #60a5fa);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after { width: 100%; }
-        .nav-link:hover { color: white; }
-
-        /* 3D Floating Animation (Iske baghair tooth move nahi karega) */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(3deg); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
     </style>
 </head>
 <body>
 
-    <nav class="fixed w-full z-[100] bg-black/40 backdrop-blur-xl border-b border-white/5">
+    <nav class="fixed w-full z-50 bg-[#020617]/90 backdrop-blur-lg border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
             
-            <div class="flex items-center gap-3 group cursor-pointer">
-                <div class="relative">
-                    <div class="absolute -inset-1 bg-blue-600 rounded-xl blur opacity-20 group-hover:opacity-60 transition duration-1000"></div>
-                    <div class="relative w-11 h-11 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center border border-white/10 shadow-2xl">
-                        <i class="fas fa-tooth text-white text-xl"></i>
-                    </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                    <i class="fas fa-tooth text-white text-lg"></i>
                 </div>
-                <div class="flex flex-col">
-                    <span class="text-xl font-extrabold tracking-tighter uppercase text-white logo-glow leading-none">
-                        Dental <span class="text-blue-500">Confessions</span>
-                    </span>
-                    <span class="text-[8px] font-black tracking-[0.4em] text-blue-400 uppercase mt-1 text-center lg:text-left">Advanced 3D Studio</span>
-                </div>
+                <span class="text-xl font-extrabold tracking-tighter uppercase text-white">Dental <span class="text-blue-500 font-black">Confessions</span></span>
             </div>
 
-            <div class="hidden lg:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Services</a>
-                <a href="#" class="nav-link text-blue-400">Technology</a>
-                <a href="#" class="nav-link">Book Appointment</a>
-                <a href="#" class="bg-blue-600 text-white px-8 py-4 rounded-full font-black hover:bg-blue-500 transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] border border-blue-400/20">
-                    Contact Us
+            <div class="hidden md:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#technology" class="hover:text-white transition-colors">Technology</a>
+                <a href="tel:+123456789" class="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-500 transition-all shadow-xl shadow-blue-900/20">
+                    Book Appointment
                 </a>
             </div>
 
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl p-2">
-                <i class="fas fa-bars-staggered" id="menuIcon"></i>
-            </button>
+            <button onclick="toggleMenu()" class="md:hidden text-white text-2xl p-2"><i class="fas fa-bars-staggered"></i></button>
         </div>
     </nav>
 
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black/90 z-[150] hidden backdrop-blur-sm" onclick="toggleMenu()"></div>
-    <div id="sidebar" class="fixed right-0 top-0 h-full w-[300px] bg-[#080808] z-[200] p-12 flex flex-col border-l border-white/5 sidebar-hidden">
-        <div class="flex justify-between items-center mb-16">
-            <span class="text-[10px] font-black text-blue-500 tracking-[0.4em] uppercase italic text-white">Menu</span>
-            <button onclick="toggleMenu()" class="text-4xl text-slate-500 hover:text-white transition-colors">&times;</button>
-        </div>
-        <div class="flex flex-col gap-9 text-white">
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Home</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">About</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Services</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black text-blue-500 transition-all">Technology</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Book Appointment</a>
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/80 z-[60] hidden backdrop-blur-sm" onclick="toggleMenu()"></div>
+    <div id="sidebar" class="fixed right-0 top-0 h-full w-[280px] bg-[#020617] z-[70] p-12 flex flex-col gap-8 shadow-2xl sidebar-hidden transition-transform border-l border-white/5">
+        <button onclick="toggleMenu()" class="text-3xl text-slate-500 self-end">&times;</button>
+        <div class="flex flex-col gap-8 text-2xl font-extrabold uppercase tracking-tight text-white">
+            <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#services" onclick="toggleMenu()">Services</a>
+            <a href="#technology" onclick="toggleMenu()">Technology</a>
+            <hr class="border-white/5 mt-4">
+            <a href="tel:+123456789" class="text-blue-500 text-lg flex items-center gap-3">
+                <i class="fas fa-phone"></i> Emergency Call
+            </a>
         </div>
     </div>
 
-    <section class="relative pt-44 pb-20 lg:pt-64 lg:pb-40 overflow-hidden">
-        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
+    <section class="hero-vibe pt-48 pb-24 md:pt-60 md:pb-40">
+        <div class="circle-decor circle-decor-lg"></div>
+        <div class="circle-decor circle-decor-md"></div>
         
-        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-                
-                <div class="w-full lg:w-3/5 space-y-10 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-3 bg-blue-500/10 border border-blue-500/20 text-blue-400 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em]">
-                        <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span>
-                        Dubai's Advanced 3D Center
-                    </div>
-                    <h1 class="text-6xl md:text-[100px] font-black leading-[0.85] tracking-tighter uppercase text-white">
-                        Redefining <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 italic logo-glow">Modern Smiles.</span>
-                    </h1>
-                    <p class="text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-                        Merge 3D bio-technology with aesthetic artistry to sculpt the smile you’ve always hidden.
-                    </p>
-                    <div class="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start pt-6">
-                        <button class="bg-white text-black px-12 py-6 rounded-full font-black uppercase text-sm tracking-widest hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl">
-                            Get Your 3D Scan
-                        </button>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-2/5 relative flex justify-center items-center">
-                    <div class="relative z-10 animate-float">
-                        <img src="https://img.freepik.com/free-psd/3d-dentistry-illustration-with-tooth_23-2150352526.jpg" 
-                             alt="3D Tooth" 
-                             class="w-full h-auto rounded-[4rem] shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-white/10 brightness-110">
-                    </div>
-                    <div class="absolute w-[120%] h-[120%] border border-white/5 rounded-full animate-[spin_20s_linear_infinite]"></div>
-                </div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
+            
+            <div class="mb-10 inline-flex items-center gap-3 bg-blue-500/10 border border-blue-500/20 text-blue-400 px-6 py-2.5 rounded-full text-[10px] font-extrabold uppercase tracking-[0.3em]">
+                <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                DUBAI'S MOST ADVANCED 3D CLINIC
             </div>
+
+            <h1 class="text-6xl md:text-9xl font-black leading-[0.85] tracking-tighter uppercase mb-10 max-w-5xl">
+                <span class="text-white">Future of</span><br>
+                <span class="text-glow italic">3D Dentistry.</span>
+            </td>
+
+            <p class="text-xl text-slate-400 max-w-xl font-medium leading-relaxed mb-12">
+                We use <span class="text-white font-bold">AI-Driven 3D Modeling</span> to sculpt your perfect smile and reveal the confidence you've always hidden.
+            </p>
+
+            <button class="bg-white text-black px-12 py-6 rounded-full font-extrabold uppercase text-xs tracking-[0.2em] shadow-2xl shadow-slate-900/40 hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                Get Your 3D Scan
+            </button>
         </div>
     </section>
 
@@ -140,6 +141,5 @@
             }
         }
     </script>
-
 </body>
 </html>
