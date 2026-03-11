@@ -322,34 +322,33 @@
 
         <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
             
-            <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Operationsstue-1.jpg" 
-                     class="gallery-img w-full h-full object-cover" 
-                     alt="Modern Surgery Room">
-                <div class="overlay-text">
-                    <p class="text-white font-black uppercase tracking-widest text-[10px]">Premium Operatory</p>
+            <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-blue-950/40 to-black flex items-center justify-center p-12">
+                <div class="text-center transition-all duration-500 group-hover:scale-110">
+                    <i class="fas fa-hospital-user text-6xl text-blue-500/30 mb-6"></i>
+                    <p class="text-white font-black uppercase tracking-[0.3em] text-sm">Advanced Studio</p>
+                </div>
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]"></div>
+            </div>
+
+            <div class="md:col-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-tr from-zinc-900 to-black h-64 md:h-auto flex items-center justify-center">
+                <div class="text-center transition-all duration-500 group-hover:scale-110">
+                    <i class="fas fa-microchip text-4xl text-indigo-500/40 mb-4"></i>
+                    <p class="text-white font-black uppercase tracking-[0.3em] text-[10px]">Digital Diagnostics</p>
                 </div>
             </div>
 
-            <div class="md:col-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900 h-64 md:h-auto">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Zahnarzt_Zahnarztpraxis.jpg" 
-                     class="gallery-img w-full h-full object-cover" 
-                     alt="Dental Technology">
-                <div class="overlay-text">
-                    <p class="text-white font-black uppercase tracking-widest text-[10px]">Digital Analysis</p>
+            <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-zinc-900 to-black h-64 md:h-auto flex items-center justify-center">
+                <div class="text-center transition-all duration-500 group-hover:scale-110">
+                    <i class="fas fa-hand-holding-heart text-3xl text-blue-400/30 mb-3"></i>
+                    <p class="text-white/70 font-black uppercase tracking-[0.2em] text-[9px]">Patient Care</p>
                 </div>
             </div>
 
-            <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900 h-64 md:h-auto">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dental_tools_01.jpg" 
-                     class="gallery-img w-full h-full object-cover" 
-                     alt="Expert Care">
-            </div>
-
-            <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900 h-64 md:h-auto">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Smile_Girl.jpg" 
-                     class="gallery-img w-full h-full object-cover" 
-                     alt="Patient Result">
+            <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-indigo-950/30 to-black h-64 md:h-auto flex items-center justify-center">
+                <div class="text-center transition-all duration-500 group-hover:scale-110">
+                    <i class="fas fa-star text-3xl text-yellow-500/20 mb-3"></i>
+                    <p class="text-white/70 font-black uppercase tracking-[0.2em] text-[9px]">Perfect Smiles</p>
+                </div>
             </div>
 
         </div>
@@ -357,35 +356,13 @@
 </section>
 
 <style>
-    .gallery-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: grayscale(0); /* Colorful on mobile */
+    /* Hover animations for Non-Image Cards */
+    .group {
+        transition: all 0.5s ease;
     }
-
-    .overlay-text {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 2rem;
-        transition: all 0.4s ease;
-    }
-
-    @media (min-width: 1024px) {
-        .gallery-img { filter: grayscale(100%); }
-        .overlay-text { opacity: 0; }
-        .group:hover .gallery-img { filter: grayscale(0); transform: scale(1.05); }
-        .group:hover .overlay-text { opacity: 1; }
-    }
-
-    /* Mobile view: Always show labels and color */
-    @media (max-width: 1023px) {
-        .overlay-text { opacity: 1; }
+    .group:hover {
+        border-color: rgba(59, 130, 246, 0.3);
+        background-color: rgba(255, 255, 255, 0.02);
     }
 </style>
     
