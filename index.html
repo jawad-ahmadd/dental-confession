@@ -323,37 +323,27 @@
         <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
             
             <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900">
-                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1000&auto=format&fit=crop" 
-                     class="w-full h-full object-cover grayscale-0 lg:grayscale lg:group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" 
-                     alt="Surgery Center"
-                     onerror="this.src='https://placehold.co/800x800/111/444?text=Clinical+Studio'">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 lg:group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
-                    <p class="text-white font-black uppercase tracking-widest text-[10px]">Premium Operatory</p>
-                </div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Dentistry_at_the_University_of_Pannonia_04.jpg/1200px-Dentistry_at_the_University_of_Pannonia_04.jpg" 
+                     class="gallery-img w-full h-full object-cover" 
+                     alt="Studio">
             </div>
 
             <div class="md:col-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 h-64 md:h-auto bg-zinc-900">
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1000&auto=format&fit=crop" 
-                     class="w-full h-full object-cover grayscale-0 lg:grayscale lg:group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" 
-                     alt="Advanced Tech"
-                     onerror="this.src='https://placehold.co/800x400/111/444?text=3D+Imaging'">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 lg:group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
-                    <p class="text-white font-black uppercase tracking-widest text-[10px]">Precision Scanning</p>
-                </div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Teeth_cleaning_and_dentistry.jpg/1200px-Teeth_cleaning_and_dentistry.jpg" 
+                     class="gallery-img w-full h-full object-cover" 
+                     alt="Technology">
             </div>
 
             <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 h-64 md:h-auto bg-zinc-900">
-                <img src="https://images.unsplash.com/photo-1445527266038-76508a860710?q=80&w=800&auto=format&fit=crop" 
-                     class="w-full h-full object-cover grayscale-0 lg:grayscale lg:group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" 
-                     alt="Procedure"
-                     onerror="this.src='https://placehold.co/400x400/111/444?text=Expert+Care'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Stomatological_clinic_in_Russia.jpg/1024px-Stomatological_clinic_in_Russia.jpg" 
+                     class="gallery-img w-full h-full object-cover" 
+                     alt="Care">
             </div>
 
             <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 h-64 md:h-auto bg-zinc-900">
-                <img src="https://images.unsplash.com/photo-1593054981440-318e9d54c199?q=80&w=800&auto=format&fit=crop" 
-                     class="w-full h-full object-cover grayscale-0 lg:grayscale lg:group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" 
-                     alt="Patient Smile"
-                     onerror="this.src='https://placehold.co/400x400/111/444?text=Masterpiece'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Dentistry_1.jpg/1200px-Dentistry_1.jpg" 
+                     class="gallery-img w-full h-full object-cover" 
+                     alt="Smile">
             </div>
 
         </div>
@@ -361,14 +351,19 @@
 </section>
 
 <style>
-    /* Force color on mobile for all gallery images */
-    @media (max-width: 1024px) {
-        #gallery img {
-            filter: grayscale(0) !important;
+    /* Styling for Gallery */
+    .gallery-img {
+        transition: all 0.7s ease;
+        filter: grayscale(0); /* Default for Mobile */
+    }
+
+    @media (min-width: 1024px) {
+        .gallery-img {
+            filter: grayscale(100%); /* Grayscale on Desktop only */
         }
-        #gallery .opacity-0 {
-            opacity: 1 !important;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent) !important;
+        .group:hover .gallery-img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
         }
     }
 </style>
