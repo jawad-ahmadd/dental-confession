@@ -323,29 +323,29 @@
         <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
             
             <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900">
-                <img src="https://picsum.photos/id/384/800/800" 
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000" 
                      class="gallery-img w-full h-full object-cover" 
-                     alt="Surgery Room">
-                <div class="overlay-label">STUDIO</div>
+                     alt="Dental Surgery Room">
+                <div class="overlay-label">ADVANCED STUDIO</div>
             </div>
 
             <div class="md:col-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900 h-64 md:h-auto">
-                <img src="https://picsum.photos/id/447/800/400" 
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1000" 
                      class="gallery-img w-full h-full object-cover" 
-                     alt="Dental Tech">
+                     alt="Dental Technology">
                 <div class="overlay-label">TECHNOLOGY</div>
             </div>
 
             <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900 h-64 md:h-auto">
-                <img src="https://picsum.photos/id/349/400/400" 
+                <img src="https://images.unsplash.com/photo-1445527266038-76508a860710?auto=format&fit=crop&q=80&w=600" 
                      class="gallery-img w-full h-full object-cover" 
-                     alt="Patient Care">
+                     alt="Expert Dental Care">
             </div>
 
             <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900 h-64 md:h-auto">
-                <img src="https://picsum.photos/id/64/400/400" 
+                <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=600" 
                      class="gallery-img w-full h-full object-cover" 
-                     alt="Smile Result">
+                     alt="Perfect Smile">
             </div>
 
         </div>
@@ -353,16 +353,14 @@
 </section>
 
 <style>
-    /* Images base styling */
     .gallery-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: all 0.7s ease;
-        filter: grayscale(0); /* Colorful on Mobile */
+        filter: grayscale(0); /* Colorful for Mobile */
     }
 
-    /* Labels styling */
     .overlay-label {
         position: absolute;
         bottom: 2rem;
@@ -375,32 +373,16 @@
         z-index: 20;
     }
 
-    /* Desktop Hover Effects */
     @media (min-width: 1024px) {
-        .gallery-img {
-            filter: grayscale(100%);
-        }
-        .group:hover .gallery-img {
-            filter: grayscale(0);
-            transform: scale(1.05);
-        }
-        .overlay-label {
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .group:hover .overlay-label {
-            opacity: 1;
-        }
+        .gallery-img { filter: grayscale(100%); }
+        .group:hover .gallery-img { filter: grayscale(0); transform: scale(1.05); }
+        .overlay-label { opacity: 0; transition: opacity 0.4s ease; }
+        .group:hover .overlay-label { opacity: 1; }
     }
 
-    /* Mobile: Always colorful and show labels */
     @media (max-width: 1023px) {
-        .gallery-img {
-            filter: grayscale(0) !important;
-        }
-        .overlay-label {
-            opacity: 1 !important;
-        }
+        .gallery-img { filter: grayscale(0) !important; }
+        .overlay-label { opacity: 1 !important; }
     }
 </style>
     
