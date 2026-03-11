@@ -323,33 +323,29 @@
         <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
             
             <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Operationsstue-1.jpg" 
+                <img src="https://picsum.photos/id/384/800/800" 
                      class="gallery-img w-full h-full object-cover" 
-                     alt="Modern Surgery Room">
-                <div class="overlay-text">
-                    <p class="text-white font-black uppercase tracking-widest text-[10px]">Premium Operatory</p>
-                </div>
+                     alt="Surgery Room">
+                <div class="overlay-label">STUDIO</div>
             </div>
 
             <div class="md:col-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900 h-64 md:h-auto">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Zahnarzt_Zahnarztpraxis.jpg" 
+                <img src="https://picsum.photos/id/447/800/400" 
                      class="gallery-img w-full h-full object-cover" 
-                     alt="Dental Technology">
-                <div class="overlay-text">
-                    <p class="text-white font-black uppercase tracking-widest text-[10px]">Digital Analysis</p>
-                </div>
+                     alt="Dental Tech">
+                <div class="overlay-label">TECHNOLOGY</div>
             </div>
 
             <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900 h-64 md:h-auto">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Dental_tools_01.jpg" 
+                <img src="https://picsum.photos/id/349/400/400" 
                      class="gallery-img w-full h-full object-cover" 
-                     alt="Expert Care">
+                     alt="Patient Care">
             </div>
 
             <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900 h-64 md:h-auto">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Smile_Girl.jpg" 
+                <img src="https://picsum.photos/id/64/400/400" 
                      class="gallery-img w-full h-full object-cover" 
-                     alt="Patient Result">
+                     alt="Smile Result">
             </div>
 
         </div>
@@ -357,35 +353,54 @@
 </section>
 
 <style>
+    /* Images base styling */
     .gallery-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: grayscale(0); /* Colorful on mobile */
+        transition: all 0.7s ease;
+        filter: grayscale(0); /* Colorful on Mobile */
     }
 
-    .overlay-text {
+    /* Labels styling */
+    .overlay-label {
         position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 2rem;
-        transition: all 0.4s ease;
+        bottom: 2rem;
+        left: 2rem;
+        color: white;
+        font-weight: 900;
+        font-size: 10px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        z-index: 20;
     }
 
+    /* Desktop Hover Effects */
     @media (min-width: 1024px) {
-        .gallery-img { filter: grayscale(100%); }
-        .overlay-text { opacity: 0; }
-        .group:hover .gallery-img { filter: grayscale(0); transform: scale(1.05); }
-        .group:hover .overlay-text { opacity: 1; }
+        .gallery-img {
+            filter: grayscale(100%);
+        }
+        .group:hover .gallery-img {
+            filter: grayscale(0);
+            transform: scale(1.05);
+        }
+        .overlay-label {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .group:hover .overlay-label {
+            opacity: 1;
+        }
     }
 
-    /* Mobile view: Always show labels and color */
+    /* Mobile: Always colorful and show labels */
     @media (max-width: 1023px) {
-        .overlay-text { opacity: 1; }
+        .gallery-img {
+            filter: grayscale(0) !important;
+        }
+        .overlay-label {
+            opacity: 1 !important;
+        }
     }
 </style>
     
