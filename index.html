@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        
+        /* Sirf smooth scroll add kiya hai scrolling ke liye */
+        html { scroll-behavior: smooth; }
+
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; margin: 0; }
         
         /* Premium Logo Glow */
@@ -34,7 +38,7 @@
     <nav class="fixed w-full z-[100] bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
             
-            <div class="flex items-center gap-3 group cursor-pointer">
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo(0,0)">
                 <div class="relative">
                     <div class="absolute -inset-1 bg-blue-600 rounded-xl blur opacity-20 group-hover:opacity-60 transition duration-1000"></div>
                     <div class="relative w-11 h-11 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-2xl border border-white/10">
@@ -50,10 +54,10 @@
             </div>
 
             <div class="hidden lg:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Services</a>
-                <a href="#" class="nav-link text-blue-400">Technology</a>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#technology" class="nav-link text-blue-400">Technology</a>
                 <a href="#" class="nav-link text-white">Book Appointment</a>
                 <a href="#" class="bg-blue-600 text-white px-8 py-4 rounded-full font-black hover:bg-blue-500 transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] border border-blue-400/20">
                     Contact Us
@@ -65,104 +69,102 @@
             </button>
         </div>
     </nav>
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505]">
-    
-    <div class="absolute inset-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-blue-500/10 rounded-full animate-[spin_40s_linear_infinite]"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full animate-[spin_25s_linear_infinite_reverse]"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px]"></div>
-    </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <div class="mb-10 inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-2 rounded-full">
-            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
-            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400">Elite Oral Artistry</span>
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505]">
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-blue-500/10 rounded-full animate-[spin_40s_linear_infinite]"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full animate-[spin_25s_linear_infinite_reverse]"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px]"></div>
         </div>
 
-        <h1 class="text-6xl md:text-[120px] font-black leading-[0.85] tracking-tighter uppercase text-white mb-10">
-            Redefining <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-600 to-indigo-500 italic">Modern Smiles.</span>
-        </h1>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="mb-10 inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-2 rounded-full">
+                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+                <span class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400">Elite Oral Artistry</span>
+            </div>
 
-        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed mb-14">
-            Where advanced bio-technology meets aesthetic precision. Experience the future of dental excellence in the heart of Dubai.
-        </p>
+            <h1 class="text-6xl md:text-[120px] font-black leading-[0.85] tracking-tighter uppercase text-white mb-10">
+                Redefining <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-600 to-indigo-500 italic">Modern Smiles.</span>
+            </h1>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button class="w-full sm:w-auto bg-white text-black px-12 py-6 rounded-full font-black uppercase text-[11px] tracking-[0.2em] hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl">
-                Get Your Consultation
-            </button>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed mb-14">
+                Where advanced bio-technology meets aesthetic precision. Experience the future of dental excellence in the heart of Dubai.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <button class="w-full sm:w-auto bg-white text-black px-12 py-6 rounded-full font-black uppercase text-[11px] tracking-[0.2em] hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl">
+                    Get Your Consultation
+                </button>
+            </div>
         </div>
-    </div>
 
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
-        <div class="w-[1px] h-20 bg-gradient-to-b from-transparent to-white"></div>
-        <span class="text-[8px] font-black uppercase tracking-[0.5em] text-white [writing-mode:vertical-lr]">Scroll</span>
-    </div>
-</section>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
+            <div class="w-[1px] h-20 bg-gradient-to-b from-transparent to-white"></div>
+            <span class="text-[8px] font-black uppercase tracking-[0.5em] text-white [writing-mode:vertical-lr]">Scroll</span>
+        </div>
+    </section>
+
     <section id="about" class="relative py-32 lg:py-48 bg-[#050505] overflow-hidden">
-    <div class="absolute top-1/2 right-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[100px]"></div>
+        <div class="absolute top-1/2 right-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[100px]"></div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            
-            <div class="relative group">
-                <div class="absolute -inset-4 border border-white/5 rounded-[3rem] -z-10 group-hover:border-blue-600/20 transition-colors duration-700"></div>
-                
-                <div class="overflow-hidden rounded-[2.5rem] bg-zinc-900 shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000" 
-                         alt="Advanced Dental Tech" 
-                         class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-100">
-                </div>
-
-                <div class="absolute -bottom-10 -right-6 md:right-10 bg-black/60 backdrop-blur-2xl p-8 rounded-3xl border border-white/10 shadow-2xl">
-                    <p class="text-4xl font-black text-white italic leading-none mb-2">15+</p>
-                    <p class="text-[9px] font-bold text-blue-500 uppercase tracking-[0.3em]">Years of Innovation</p>
-                </div>
-            </div>
-
-            <div class="space-y-10">
-                <div class="space-y-4">
-                    <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-blue-500">The Philosophy</h2>
-                    <h3 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none">
-                        Crafting <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Unspoken</span> Confidence.
-                    </h3>
-                </div>
-
-                <p class="text-slate-400 text-lg md:text-xl font-medium leading-relaxed">
-                    At Dental Confessions, we don't just fix teeth; we engineer smiles using clinical precision and artistic intuition. Our studio is where the world’s most advanced 3D bio-tech meets a bespoke patient experience.
-                </p>
-
-                <div class="grid grid-cols-2 gap-8 pt-6">
-                    <div class="space-y-3">
-                        <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group hover:border-blue-500/50 transition-all">
-                            <i class="fas fa-microscope text-blue-500 text-sm"></i>
-                        </div>
-                        <h4 class="text-white text-xs font-black uppercase tracking-widest">AI Precision</h4>
-                        <p class="text-slate-500 text-[11px] leading-relaxed">Every procedure is digitally mapped for 100% accuracy.</p>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="relative group">
+                    <div class="absolute -inset-4 border border-white/5 rounded-[3rem] -z-10 group-hover:border-blue-600/20 transition-colors duration-700"></div>
+                    <div class="overflow-hidden rounded-[2.5rem] bg-zinc-900 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000" 
+                             alt="Advanced Dental Tech" 
+                             class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-100">
                     </div>
-                    <div class="space-y-3">
-                        <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group hover:border-blue-500/50 transition-all">
-                            <i class="fas fa-magic text-blue-500 text-sm"></i>
-                        </div>
-                        <h4 class="text-white text-xs font-black uppercase tracking-widest">Smile Design</h4>
-                        <p class="text-slate-500 text-[11px] leading-relaxed">Bespoke aesthetic planning tailored to your facial structure.</p>
+                    <div class="absolute -bottom-10 -right-6 md:right-10 bg-black/60 backdrop-blur-2xl p-8 rounded-3xl border border-white/10 shadow-2xl">
+                        <p class="text-4xl font-black text-white italic leading-none mb-2">15+</p>
+                        <p class="text-[9px] font-bold text-blue-500 uppercase tracking-[0.3em]">Years of Innovation</p>
                     </div>
                 </div>
 
-                <div class="pt-6">
-                    <a href="#" class="inline-flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.3em] text-white hover:text-blue-500 transition-colors group">
-                        Discover Our Story
-                        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all">
-                            <i class="fas fa-arrow-right text-[10px]"></i>
+                <div class="space-y-10">
+                    <div class="space-y-4">
+                        <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-blue-500">The Philosophy</h2>
+                        <h3 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none">
+                            Crafting <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Unspoken</span> Confidence.
+                        </h3>
+                    </div>
+
+                    <p class="text-slate-400 text-lg md:text-xl font-medium leading-relaxed">
+                        At Dental Confessions, we don't just fix teeth; we engineer smiles using clinical precision and artistic intuition. Our studio is where the world’s most advanced 3D bio-tech meets a bespoke patient experience.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-8 pt-6">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group hover:border-blue-500/50 transition-all">
+                                <i class="fas fa-microscope text-blue-500 text-sm"></i>
+                            </div>
+                            <h4 class="text-white text-xs font-black uppercase tracking-widest">AI Precision</h4>
+                            <p class="text-slate-500 text-[11px] leading-relaxed">Every procedure is digitally mapped for 100% accuracy.</p>
                         </div>
-                    </a>
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group hover:border-blue-500/50 transition-all">
+                                <i class="fas fa-magic text-blue-500 text-sm"></i>
+                            </div>
+                            <h4 class="text-white text-xs font-black uppercase tracking-widest">Smile Design</h4>
+                            <p class="text-slate-500 text-[11px] leading-relaxed">Bespoke aesthetic planning tailored to your facial structure.</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <a href="#" class="inline-flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.3em] text-white hover:text-blue-500 transition-colors group">
+                            Discover Our Story
+                            <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all">
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
+
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/90 z-[150] hidden backdrop-blur-sm" onclick="toggleMenu()"></div>
     
     <div id="sidebar" class="fixed right-0 top-0 h-full w-[300px] bg-[#080808] z-[200] p-12 flex flex-col border-l border-white/5 sidebar-hidden">
@@ -172,10 +174,10 @@
         </div>
         
         <div class="flex flex-col gap-9 text-white">
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Home</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">About</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Services</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black text-blue-500 transition-all">Technology</a>
+            <a href="#home" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Home</a>
+            <a href="#about" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">About</a>
+            <a href="#services" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Services</a>
+            <a href="#technology" onclick="toggleMenu()" class="text-2xl font-black text-blue-500 transition-all">Technology</a>
             <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Book Appointment</a>
             
             <div class="mt-8 pt-12 border-t border-white/5">
