@@ -402,7 +402,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <div class="group relative p-10 rounded-[2.5rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all duration-500">
-                <div class="flex gap-1 mb-6 text-blue-500 lg:opacity-40 lg:group-hover:opacity-100 transition-opacity">
+                <div class="flex gap-1 mb-6 text-blue-500 lg:opacity-40 lg:group-hover:opacity-100 transition-opacity stars-container">
                     <i class="fas fa-star text-xs"></i>
                     <i class="fas fa-star text-xs"></i>
                     <i class="fas fa-star text-xs"></i>
@@ -410,19 +410,19 @@
                     <i class="fas fa-star text-xs"></i>
                 </div>
                 <p class="text-slate-300 text-lg font-medium leading-relaxed mb-8">
-                    "The 3D smile design was a game changer. I could see my results before the treatment started. Highly recommended!"
+                    "Main ne yahan se braces lagwaye thay aur result kamaal ka hai! Aligners itne comfortable hain ke pata bhi nahi chalta. Best experience raha."
                 </p>
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-black text-white text-xs">JD</div>
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-black text-white text-xs uppercase">AM</div>
                     <div>
-                        <h4 class="text-white font-bold text-sm">James Daniel</h4>
-                        <p class="text-slate-500 text-[10px] uppercase tracking-widest">Tech Entrepreneur</p>
+                        <h4 class="text-white font-bold text-sm">Ali Mansoor</h4>
+                        <p class="text-slate-500 text-[10px] uppercase tracking-widest">Lahore, PK</p>
                     </div>
                 </div>
             </div>
 
             <div class="group relative p-10 rounded-[2.5rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all duration-500">
-                <div class="flex gap-1 mb-6 text-blue-500 lg:opacity-40 lg:group-hover:opacity-100 transition-opacity">
+                <div class="flex gap-1 mb-6 text-blue-500 lg:opacity-40 lg:group-hover:opacity-100 transition-opacity stars-container">
                     <i class="fas fa-star text-xs"></i>
                     <i class="fas fa-star text-xs"></i>
                     <i class="fas fa-star text-xs"></i>
@@ -430,19 +430,19 @@
                     <i class="fas fa-star text-xs"></i>
                 </div>
                 <p class="text-slate-300 text-lg font-medium leading-relaxed mb-8">
-                    "Clean, professional, and ultra-modern. The invisible aligners work like magic. The best clinic in the city."
+                    "Clinic ka environment buhat modern aur saaf hai. Staff ka behavior buhat professional hai, khas tor par treatment ki detail achi di."
                 </p>
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center font-black text-white text-xs">SR</div>
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center font-black text-white text-xs uppercase">ZH</div>
                     <div>
-                        <h4 class="text-white font-bold text-sm">Sarah Raza</h4>
-                        <p class="text-slate-500 text-[10px] uppercase tracking-widest">Fashion Designer</p>
+                        <h4 class="text-white font-bold text-sm">Zainab Hayat</h4>
+                        <p class="text-slate-500 text-[10px] uppercase tracking-widest">Karachi, PK</p>
                     </div>
                 </div>
             </div>
 
             <div class="group relative p-10 rounded-[2.5rem] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all duration-500">
-                <div class="flex gap-1 mb-6 text-blue-500 lg:opacity-40 lg:group-hover:opacity-100 transition-opacity">
+                <div class="flex gap-1 mb-6 text-blue-500 lg:opacity-40 lg:group-hover:opacity-100 transition-opacity stars-container">
                     <i class="fas fa-star text-xs"></i>
                     <i class="fas fa-star text-xs"></i>
                     <i class="fas fa-star text-xs"></i>
@@ -450,13 +450,13 @@
                     <i class="fas fa-star text-xs"></i>
                 </div>
                 <p class="text-slate-300 text-lg font-medium leading-relaxed mb-8">
-                    "Finally a dentist who uses real technology. The procedure was painless and the results are stunning."
+                    "Finally aik aisa dentist mila jo modern technology use karta hai. Treatment pain-free tha aur result umeed se behtar mila."
                 </p>
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-400 to-blue-600 flex items-center justify-center font-black text-white text-xs">MK</div>
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-400 to-blue-600 flex items-center justify-center font-black text-white text-xs uppercase">UM</div>
                     <div>
-                        <h4 class="text-white font-bold text-sm">Michael Khan</h4>
-                        <p class="text-slate-500 text-[10px] uppercase tracking-widest">Software Engineer</p>
+                        <h4 class="text-white font-bold text-sm">Usman Malik</h4>
+                        <p class="text-slate-500 text-[10px] uppercase tracking-widest">Islamabad, PK</p>
                     </div>
                 </div>
             </div>
@@ -466,11 +466,10 @@
 </section>
 
 <style>
-    /* Mobile specific style for Testimonials */
+    /* Force color on mobile for stars */
     @media (max-width: 1024px) {
-        #testimonials .lg\:opacity-40 {
+        .stars-container {
             opacity: 1 !important;
-            color: #3b82f6 !important; /* Blue-500 */
         }
     }
 </style>
