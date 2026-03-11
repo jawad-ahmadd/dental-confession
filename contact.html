@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Appointment | Dental Confessions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; }
+        .nav-glass { background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-glass fixed w-full z-[100] px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black uppercase tracking-tighter">
+                Dental <span class="text-blue-500">Confessions.</span>
+            </a>
+            <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
+                <a href="index.html#services" class="hover:text-blue-500 transition-all">Services</a>
+                <a href="index.html#technology" class="hover:text-blue-500 transition-all">Tech</a>
+                <a href="index.html#gallery" class="hover:text-blue-500 transition-all">Gallery</a>
+                <a href="contact.html" class="text-white border-b border-orange-500">Contact</a>
+            </div>
+            <a href="https://wa.me/923244404184" class="px-6 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-orange-500 hover:text-white transition-all">
+                Call Now
+            </a>
+        </div>
+    </nav>
+
+    <div class="h-24"></div>
+
+    <section class="relative py-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="max-w-3xl mb-16">
+                <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-orange-500 mb-4">Get In Touch</h2>
+                <h1 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-tight mb-6 italic">
+                    Book Your <br> 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Consultation.</span>
+                </h1>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
+                <div class="bg-[#111] p-8 md:p-12 rounded-[3rem] border border-white/5 shadow-2xl">
+                    <div class="flex items-center gap-4 mb-10">
+                        <div class="w-1 h-8 bg-orange-500 rounded-full"></div>
+                        <h3 class="text-2xl font-black text-white uppercase tracking-tighter italic">Drop a Message</h3>
+                    </div>
+                    <form class="space-y-6">
+                        <input type="text" placeholder="Full Name" class="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-4 focus:border-orange-500 outline-none transition-all">
+                        <input type="email" placeholder="Email Address" class="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-4 focus:border-orange-500 outline-none transition-all">
+                        <textarea rows="4" placeholder="How can we help?" class="w-full bg-[#1a1a1a] border border-white/5 rounded-2xl px-6 py-4 focus:border-orange-500 outline-none transition-all resize-none"></textarea>
+                        <button class="w-full py-5 bg-orange-500 text-black font-black uppercase tracking-[0.2em] text-xs rounded-2xl hover:bg-orange-600 transition-all">Send Inquiry</button>
+                    </form>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-[#111] p-12 rounded-[3rem] border border-white/5 text-center flex flex-col items-center justify-center h-full group">
+                        <i class="fab fa-whatsapp text-6xl text-orange-500 mb-8 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-2xl font-black uppercase tracking-tight mb-4 italic">Fast-Track Strategy</h3>
+                        <p class="text-zinc-500 text-sm mb-10 uppercase tracking-widest leading-relaxed">Schedule your session directly via WhatsApp for instant response.</p>
+                        <a href="https://wa.me/923244404184" class="px-12 py-5 bg-orange-500 text-black font-black uppercase tracking-[0.2em] text-xs rounded-full">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-[450px] rounded-[3rem] overflow-hidden border border-white/10 grayscale invert opacity-70">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.321867142491!2d74.3768224!3d31.5152862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919052207470ce9%3A0x330b3fd416d6b89a!2sDental%20Confessions!5e0!3m2!1sen!2s!4v1709110000000!5m2!1sen!2s" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="relative py-16 bg-[#050505] border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-12">
+                <div class="max-w-xs text-center md:text-left">
+                    <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-4">Dental <span class="text-blue-500">Confessions.</span></h2>
+                    <p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest">Redefining the art of dentistry with precision technology.</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://wa.me/923244404184" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-green-600 transition-all"><i class="fab fa-whatsapp text-xs"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-600 transition-all"><i class="fab fa-facebook-f text-xs"></i></a>
+                </div>
+            </div>
+            <hr class="border-white/5 my-12">
+            <div class="flex justify-between items-center">
+                <p class="text-slate-600 text-[9px] uppercase tracking-widest font-bold">© 2024 Dental Confessions. All Rights Reserved.</p>
+                <p class="text-white text-[9px] font-black uppercase tracking-widest">Designed by Jawad</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
