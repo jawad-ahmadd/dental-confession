@@ -322,28 +322,38 @@
 
         <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
             
-            <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-900">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Dentistry_at_the_University_of_Pannonia_04.jpg/1200px-Dentistry_at_the_University_of_Pannonia_04.jpg" 
-                     class="gallery-img w-full h-full object-cover" 
-                     alt="Studio">
+            <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#111]">
+                <div class="absolute inset-0 flex items-center justify-center text-white/10 italic font-black text-4xl select-none">STUDIO</div>
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=60&w=800" 
+                     class="gallery-img w-full h-full object-cover relative z-10" 
+                     onerror="this.style.display='none'">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-20 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all p-8 flex flex-col justify-end">
+                    <p class="text-white font-black uppercase tracking-widest text-[10px]">Modern Operatory</p>
+                </div>
             </div>
 
-            <div class="md:col-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 h-64 md:h-auto bg-zinc-900">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Teeth_cleaning_and_dentistry.jpg/1200px-Teeth_cleaning_and_dentistry.jpg" 
-                     class="gallery-img w-full h-full object-cover" 
-                     alt="Technology">
+            <div class="md:col-span-2 relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#111] h-64 md:h-auto">
+                <div class="absolute inset-0 flex items-center justify-center text-white/10 italic font-black text-2xl select-none">TECHNOLOGY</div>
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=60&w=800" 
+                     class="gallery-img w-full h-full object-cover relative z-10" 
+                     onerror="this.style.display='none'">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-20 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all p-8 flex flex-col justify-end">
+                    <p class="text-white font-black uppercase tracking-widest text-[10px]">Digital Scanning</p>
+                </div>
             </div>
 
-            <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 h-64 md:h-auto bg-zinc-900">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Stomatological_clinic_in_Russia.jpg/1024px-Stomatological_clinic_in_Russia.jpg" 
-                     class="gallery-img w-full h-full object-cover" 
-                     alt="Care">
+            <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#111] h-64 md:h-auto">
+                <div class="absolute inset-0 flex items-center justify-center text-white/10 italic font-black text-xl select-none">CARE</div>
+                <img src="https://images.unsplash.com/photo-1445527266038-76508a860710?auto=format&fit=crop&q=60&w=600" 
+                     class="gallery-img w-full h-full object-cover relative z-10" 
+                     onerror="this.style.display='none'">
             </div>
 
-            <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 h-64 md:h-auto bg-zinc-900">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Dentistry_1.jpg/1200px-Dentistry_1.jpg" 
-                     class="gallery-img w-full h-full object-cover" 
-                     alt="Smile">
+            <div class="relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#111] h-64 md:h-auto">
+                <div class="absolute inset-0 flex items-center justify-center text-white/10 italic font-black text-xl select-none">SMILE</div>
+                <img src="https://images.unsplash.com/photo-1593054981440-318e9d54c199?auto=format&fit=crop&q=60&w=600" 
+                     class="gallery-img w-full h-full object-cover relative z-10" 
+                     onerror="this.style.display='none'">
             </div>
 
         </div>
@@ -351,16 +361,12 @@
 </section>
 
 <style>
-    /* Styling for Gallery */
     .gallery-img {
-        transition: all 0.7s ease;
-        filter: grayscale(0); /* Default for Mobile */
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: grayscale(0);
     }
-
     @media (min-width: 1024px) {
-        .gallery-img {
-            filter: grayscale(100%); /* Grayscale on Desktop only */
-        }
+        .gallery-img { filter: grayscale(100%); }
         .group:hover .gallery-img {
             filter: grayscale(0%);
             transform: scale(1.05);
