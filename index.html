@@ -3,58 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dental Confessions</title>
+    <title>Dental Confessions Header</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #050505; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #050505; margin: 0; }
         
-        /* Sidebar Smooth Animation */
-        #sidebar { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .sidebar-closed { transform: translateX(100%); opacity: 0; }
-        .sidebar-open { transform: translateX(0); opacity: 1; }
+        /* Sidebar Smooth Slide */
+        #sidebar { 
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .sidebar-hidden { transform: translateX(100%); }
+        .sidebar-visible { transform: translateX(0); }
     </style>
 </head>
-<body class="text-white">
+<body>
 
-    <nav class="fixed w-full z-[100] border-b border-white/5 bg-black/20 backdrop-blur-md">
+    <nav class="fixed w-full z-[100] bg-black/40 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-tooth text-sm"></i>
+                <div class="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/20">
+                    <i class="fas fa-tooth text-white text-sm"></i>
                 </div>
-                <span class="text-lg font-black tracking-tighter uppercase">Dental <span class="text-blue-500">Confessions</span></span>
+                <span class="text-lg font-extrabold tracking-tighter uppercase text-white">
+                    Dental <span class="text-blue-500 font-black">Confessions</span>
+                </span>
             </div>
 
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#" class="text-[11px] font-bold uppercase tracking-widest hover:text-blue-500 transition-colors">Treatments</a>
-                <a href="#" class="text-[11px] font-bold uppercase tracking-widest hover:text-blue-500 transition-colors">Technology</a>
-                <a href="#" class="bg-white text-black px-6 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">Book Now</a>
+            <div class="hidden md:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400">
+                <a href="#" class="hover:text-white transition-colors">Home</a>
+                <a href="#" class="hover:text-white transition-colors">Treatments</a>
+                <a href="#" class="hover:text-white transition-colors">Specialists</a>
+                <a href="#" class="hover:text-white transition-colors">Before & After</a>
+                <a href="#" class="bg-blue-600 text-white px-7 py-3 rounded-full font-extrabold hover:bg-blue-500 transition-all shadow-xl shadow-blue-900/20">
+                    Book Now
+                </a>
             </div>
 
-            <button onclick="toggleMenu()" class="md:hidden text-xl p-2">
+            <button onclick="toggleMenu()" class="md:hidden text-white text-2xl p-2 focus:outline-none">
                 <i class="fas fa-bars-staggered" id="menuIcon"></i>
             </button>
         </div>
     </nav>
 
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black/90 z-[150] hidden backdrop-blur-sm" onclick="toggleMenu()"></div>
-    <div id="sidebar" class="fixed right-0 top-0 h-full w-[280px] bg-[#0A0A0A] z-[200] p-10 flex flex-col border-l border-white/5 sidebar-closed">
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/80 z-[150] hidden backdrop-blur-sm" onclick="toggleMenu()"></div>
+    
+    <div id="sidebar" class="fixed right-0 top-0 h-full w-[280px] bg-[#0A0A0A] z-[200] p-10 flex flex-col border-l border-white/5 sidebar-hidden">
         <div class="flex justify-between items-center mb-12">
-            <span class="text-xs font-black text-slate-500 tracking-widest uppercase">Menu</span>
-            <button onclick="toggleMenu()" class="text-2xl">&times;</button>
+            <span class="text-[10px] font-black text-slate-600 tracking-widest uppercase italic">Explore Menu</span>
+            <button onclick="toggleMenu()" class="text-3xl text-slate-400">&times;</button>
         </div>
         
         <div class="flex flex-col gap-8">
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-colors">Treatments</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-colors">Technology</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-colors">Our Clinic</a>
+            <a href="#" onclick="toggleMenu()" class="text-2xl font-black text-white hover:text-blue-500 transition-colors">Home</a>
+            <a href="#" onclick="toggleMenu()" class="text-2xl font-black text-white hover:text-blue-500 transition-colors">Treatments</a>
+            <a href="#" onclick="toggleMenu()" class="text-2xl font-black text-white hover:text-blue-500 transition-colors">Specialists</a>
+            <a href="#" onclick="toggleMenu()" class="text-2xl font-black text-white hover:text-blue-500 transition-colors">Results</a>
             
-            <div class="mt-10 pt-10 border-t border-white/5">
-                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Quick Contact</p>
-                <a href="tel:+123" class="text-blue-500 font-bold tracking-tight">+971 00 000 000</a>
+            <div class="mt-6 pt-10 border-t border-white/5 flex flex-col gap-4">
+                <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Immediate Help</p>
+                <a href="tel:+971000000" class="text-blue-500 font-bold text-lg flex items-center gap-2">
+                    <i class="fas fa-phone-alt text-sm"></i> +971 00 000 000
+                </a>
             </div>
         </div>
     </div>
@@ -65,14 +77,14 @@
             const overlay = document.getElementById('sidebarOverlay');
             const icon = document.getElementById('menuIcon');
 
-            if (sidebar.classList.contains('sidebar-closed')) {
-                sidebar.classList.replace('sidebar-closed', 'sidebar-open');
+            if (sidebar.classList.contains('sidebar-hidden')) {
+                sidebar.classList.remove('sidebar-hidden');
+                sidebar.classList.add('sidebar-visible');
                 overlay.classList.remove('hidden');
-                icon.classList.replace('fa-bars-staggered', 'fa-xmark');
             } else {
-                sidebar.classList.replace('sidebar-open', 'sidebar-closed');
+                sidebar.classList.remove('sidebar-visible');
+                sidebar.classList.add('sidebar-hidden');
                 overlay.classList.add('hidden');
-                icon.classList.replace('fa-xmark', 'fa-bars-staggered');
             }
         }
     </script>
