@@ -65,7 +65,41 @@
             </button>
         </div>
     </nav>
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505]">
+    
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-blue-500/10 rounded-full animate-[spin_40s_linear_infinite]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full animate-[spin_25s_linear_infinite_reverse]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+    </div>
 
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <div class="mb-10 inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-2 rounded-full">
+            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+            <span class="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400">Elite Oral Artistry</span>
+        </div>
+
+        <h1 class="text-6xl md:text-[120px] font-black leading-[0.85] tracking-tighter uppercase text-white mb-10">
+            Redefining <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-600 to-indigo-500 italic">Modern Smiles.</span>
+        </h1>
+
+        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed mb-14">
+            Where advanced bio-technology meets aesthetic precision. Experience the future of dental excellence in the heart of Dubai.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <button class="w-full sm:w-auto bg-white text-black px-12 py-6 rounded-full font-black uppercase text-[11px] tracking-[0.2em] hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl">
+                Get Your Consultation
+            </button>
+        </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
+        <div class="w-[1px] h-20 bg-gradient-to-b from-transparent to-white"></div>
+        <span class="text-[8px] font-black uppercase tracking-[0.5em] text-white [writing-mode:vertical-lr]">Scroll</span>
+    </div>
+</section>
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/90 z-[150] hidden backdrop-blur-sm" onclick="toggleMenu()"></div>
     
     <div id="sidebar" class="fixed right-0 top-0 h-full w-[300px] bg-[#080808] z-[200] p-12 flex flex-col border-l border-white/5 sidebar-hidden">
