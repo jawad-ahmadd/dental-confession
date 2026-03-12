@@ -95,12 +95,16 @@
                 </p>
 
                 <div class="flex flex-wrap gap-4">
-                    <button class="px-10 py-5 bg-[#0A84FF] text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-sm hover:bg-white hover:text-[#0A84FF] transition-all duration-500 shadow-xl">
+                    <a href="https://wa.me/923244404184?text=Hi, I want to book a transformation appointment with Jawad." 
+                       target="_blank" 
+                       class="px-10 py-5 bg-[#0A84FF] text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-sm hover:bg-white hover:text-[#0A84FF] transition-all duration-500 shadow-xl inline-block text-center no-underline">
                         Book Transformation
-                    </button>
-                    <button class="px-10 py-5 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-sm hover:border-[#0A84FF] transition-all duration-500">
+                    </a>
+                    
+                    <a href="#masterpiece" 
+                       class="px-10 py-5 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-sm hover:border-[#0A84FF] transition-all duration-500 inline-block text-center no-underline">
                         View Results
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -121,12 +125,23 @@
 </section>
 
 <style>
+    /* Smooth Scrolling for the whole page */
+    html {
+        scroll-behavior: smooth;
+    }
+
     @keyframes floatJaw {
         0%, 100% { transform: translateY(0) rotate(0deg); }
         50% { transform: translateY(-20px) rotate(2deg); }
     }
+    
     .animate-float {
         animation: floatJaw 6s ease-in-out infinite;
+    }
+    
+    /* Remove underline from links if needed */
+    .no-underline {
+        text-decoration: none;
     }
 </style>
     <section id="about" class="relative py-12 md:py-16 bg-[#050505] overflow-hidden">
