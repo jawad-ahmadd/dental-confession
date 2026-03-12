@@ -33,7 +33,7 @@
             <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <div class="relative">
                     <div class="absolute -inset-1 bg-blue-600 rounded-xl blur opacity-20 group-hover:opacity-60 transition duration-1000"></div>
-                    <div class="relative w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center border border-white/10">
+                    <div class="relative w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center border border-white/10 shadow-2xl">
                         <i class="fas fa-tooth text-white text-lg"></i>
                     </div>
                 </div>
@@ -52,7 +52,8 @@
                 <a href="#technology" class="nav-link text-blue-400">Technology</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
                 <a href="https://wa.me/923244404184" target="_blank" class="nav-link text-white">Book Appointment</a>
-                <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full font-black hover:bg-blue-500 transition-all border border-blue-400/20 no-underline shadow-[0_10px_20px_rgba(37,99,235,0.2)]">
+                
+                <a href="contact.html" class="bg-blue-600 text-white px-6 py-3 rounded-full font-black hover:bg-blue-500 transition-all border border-blue-400/20 no-underline shadow-[0_10px_20px_rgba(37,99,235,0.2)]">
                     Contact Us
                 </a>
             </div>
@@ -72,10 +73,12 @@
             <a href="#technology" onclick="toggleMenu()" class="text-xl font-black text-white uppercase italic no-underline text-blue-400">Technology</a>
             <a href="#gallery" onclick="toggleMenu()" class="text-xl font-black text-white uppercase italic no-underline">Gallery</a>
             <hr class="border-white/10">
+            
             <a href="https://wa.me/923244404184" target="_blank" class="w-full text-center py-4 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full no-underline shadow-lg shadow-blue-600/20">
                 Book Appointment
             </a>
-            <a href="#contact" onclick="toggleMenu()" class="w-full text-center py-4 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full no-underline">
+            
+            <a href="contact.html" class="w-full text-center py-4 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full no-underline">
                 Contact Us
             </a>
         </div>
@@ -786,7 +789,7 @@
     }
 </style>
         
-    <script>
+   <script>
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
