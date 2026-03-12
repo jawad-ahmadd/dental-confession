@@ -76,13 +76,13 @@
         <canvas id="toothCanvas" class="w-full h-full"></canvas>
     </div>
 
-    <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-20">
-        <div class="absolute w-[350px] h-[350px] md:w-[700px] md:h-[700px] border border-blue-500 rounded-full animate-[spin_20s_linear_infinite]"></div>
-        <div class="absolute w-[500px] h-[500px] md:w-[1000px] md:h-[1000px] border border-white/10 rounded-full animate-[spin_35s_linear_infinite_reverse]"></div>
+    <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-30">
+        <div class="absolute w-[320px] h-[320px] md:w-[650px] md:h-[650px] border border-blue-500/20 rounded-full animate-[spin_25s_linear_infinite]"></div>
+        <div class="absolute w-[480px] h-[480px] md:w-[950px] md:h-[950px] border border-white/5 rounded-full animate-[spin_45s_linear_infinite_reverse]"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-20 text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/50 backdrop-blur-xl mb-8">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-xl mb-8 animate-fade-in">
             <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
             <span class="text-[9px] font-black uppercase tracking-[0.3em] text-white">Elite Oral Artistry</span>
         </div>
@@ -93,10 +93,10 @@
         </h1>
 
         <p class="text-slate-400 text-[10px] md:text-sm max-w-lg mx-auto uppercase tracking-widest font-medium mb-12 leading-relaxed px-4">
-            Where advanced bio-technology meets aesthetic precision. Experience the future.
+            Where advanced bio-technology meets aesthetic precision. <br class="hidden md:block"> Experience the future of dental excellence.
         </p>
 
-        <button class="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl">
+        <button class="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
             Book Your Transformation
         </button>
     </div>
@@ -107,66 +107,78 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <script>
-    // 1. Setup Three.js Scene
+    // 1. Scene & Camera Initialization
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('toothCanvas'), alpha: true, antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    // 2. Create a Realistic Tooth Shape (Placeholder Geometry for testing)
-    // Asli project mein yahan .gltf model load hota hai, filhal hum ek cool 3D shape dikhayenge
-    const geometry = new THREE.IcosahedronGeometry(2, 0); 
-    const material = new THREE.MeshPhongMaterial({ 
-        color: 0x2563eb, 
-        wireframe: true,
-        emissive: 0x001233,
-        shininess: 100
+    const renderer = new THREE.WebGLRenderer({ 
+        canvas: document.getElementById('toothCanvas'), 
+        alpha: true, 
+        antialias: true 
     });
-    const tooth = new THREE.Mesh(geometry, material);
-    scene.add(tooth);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // 3. Lights
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 5, 5).normalize();
-    scene.add(light);
-    scene.add(new THREE.AmbientLight(0x404040));
+    // 2. Premium "Dental Pearl" Material & Geometry
+    // Using a TorusKnot for an organic, abstract dental shape that feels high-end
+    const geometry = new THREE.TorusKnotGeometry(1.8, 0.5, 150, 20); 
+    const material = new THREE.MeshPhysicalMaterial({ 
+        color: 0xffffff,          // Base: Clean White
+        metalness: 0.05, 
+        roughness: 0.15,          // Glossy finish like healthy enamel
+        transmission: 0.2,       // Subtle light passage
+        thickness: 0.5,
+        clearcoat: 1.0,          // Mirror-like shine
+        clearcoatRoughness: 0.1
+    });
+    
+    const dentalMesh = new THREE.Mesh(geometry, material);
+    scene.add(dentalMesh);
 
-    camera.position.z = 5;
+    // 3. Professional Lighting (Studio Setup)
+    const mainLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    mainLight.position.set(5, 5, 5);
+    scene.add(mainLight);
 
-    // 4. Animation Loop (Auto-Rotate)
+    const accentBlue = new THREE.PointLight(0x2563eb, 2); // Blue brand reflection
+    accentBlue.position.set(-5, -3, 2);
+    scene.add(accentBlue);
+
+    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambient);
+
+    camera.position.z = 6;
+
+    // 4. Animation Loop (Floating & Rotating)
     function animate() {
         requestAnimationFrame(animate);
-        tooth.rotation.y += 0.005;
-        tooth.rotation.x += 0.002;
+        
+        // Constant organic movement
+        dentalMesh.rotation.y += 0.004;
+        dentalMesh.rotation.x += 0.002;
+        
+        // Subtle floating effect
+        dentalMesh.position.y = Math.sin(Date.now() * 0.001) * 0.15;
+        
         renderer.render(scene, camera);
     }
     animate();
 
-    // 5. GSAP Scroll Animation (The Permanent Hal)
+    // 5. GSAP Scroll Parallax (The Professional Hal)
     gsap.registerPlugin(ScrollTrigger);
     
-    gsap.to(tooth.position, {
+    gsap.to(dentalMesh.position, {
         scrollTrigger: {
             trigger: "#home",
             start: "top top",
             end: "bottom top",
-            scrub: 1
+            scrub: 1.5
         },
-        y: -5, // Moves down on scroll
-        z: -2, // Moves away
+        y: -4,           // Moves down into the next section
+        z: -4,           // Moves away to create depth
+        rotationX: 1.5   // Changes angle as you scroll
     });
 
-    gsap.to(tooth.rotation, {
-        scrollTrigger: {
-            trigger: "#home",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1
-        },
-        y: Math.PI * 2 // Full rotation
-    });
-
-    // Resize Handle
+    // Resize Handler
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
