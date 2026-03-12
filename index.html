@@ -107,66 +107,76 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <script>
+    // 1. Scene & Engine Setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('toothCanvas'), alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ 
+        canvas: document.getElementById('toothCanvas'), 
+        alpha: true, 
+        antialias: true 
+    });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // 2. THE DESIGN CHANGE: "Organic Soft Mesh"
-    // TorusKnot ki jagah ab hum aik smooth, floating geometry use kar rahe hain jo 'Enamel' jaisi feel de
-    const geometry = new THREE.IcosahedronGeometry(2, 5); // 5 is for high smoothness
-    const material = new THREE.MeshPhysicalMaterial({ 
-        color: 0xffffff,
-        metalness: 0,
-        roughness: 0.05,
-        transmission: 0.4,   // Glassy effect
-        thickness: 1,
-        clearcoat: 1.0,      // Shiny finish
-        ior: 1.5
+    // 2. THE CHROME DESIGN: "Liquid Silver"
+    // Metalness: 1 aur Roughness: 0 se ye Mirror ki tarah chamkega
+    const geometry = new THREE.TorusKnotGeometry(1.6, 0.6, 250, 32); 
+    const material = new THREE.MeshStandardMaterial({ 
+        color: 0xffffff,       // Silver Base
+        metalness: 1.0,        // 100% Mirror Metal
+        roughness: 0.05,       // Mirror-like shine
     });
     
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+    const chromeMesh = new THREE.Mesh(geometry, material);
+    scene.add(chromeMesh);
 
-    // 3. Cinematic Studio Lighting
-    const light1 = new THREE.PointLight(0xffffff, 2);
-    light1.position.set(5, 5, 5);
-    scene.add(light1);
+    // 3. High-Contrast Studio Lighting (Crucial for Chrome Vibe)
+    // Teen taraf se lights takrayengi tabhi metal chamkega
+    const topLight = new THREE.DirectionalLight(0xffffff, 3);
+    topLight.position.set(5, 10, 7);
+    scene.add(topLight);
 
-    const light2 = new THREE.PointLight(0x2563eb, 3); // Subtle Blue Glow
-    light2.position.set(-5, -5, 2);
-    scene.add(light2);
+    const blueLight = new THREE.PointLight(0x2563eb, 5); // Deep Blue Reflection
+    blueLight.position.set(-10, 0, 5);
+    scene.add(blueLight);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    const rimLight = new THREE.SpotLight(0xffffff, 2);
+    rimLight.position.set(0, -5, 10);
+    scene.add(rimLight);
 
     camera.position.z = 6;
 
-    // 4. Smooth Animation
+    // 4. Smooth Animation Loop
     function animate() {
         requestAnimationFrame(animate);
-        mesh.rotation.y += 0.002;
-        mesh.rotation.x += 0.001;
-        // Floating movement
-        mesh.position.y = Math.sin(Date.now() * 0.001) * 0.1;
+        
+        // Slow organic rotation for high-end feel
+        chromeMesh.rotation.y += 0.006;
+        chromeMesh.rotation.z += 0.002;
+        
+        // Subtle floating movement
+        chromeMesh.position.y = Math.sin(Date.now() * 0.001) * 0.15;
+        
         renderer.render(scene, camera);
     }
     animate();
 
-    // 5. Scroll Parallax
+    // 5. Scroll Interaction (GSAP)
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to(mesh.position, {
+    
+    gsap.to(chromeMesh.position, {
         scrollTrigger: {
             trigger: "#home",
             start: "top top",
             end: "bottom top",
             scrub: 1.2
         },
-        y: -3,
-        z: -4,
-        rotationZ: 1
+        y: -4,        // Moves down
+        z: -3,        // Moves deeper
+        rotationX: 2  // Dramatic flip on scroll
     });
 
+    // Resize Handler
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
