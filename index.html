@@ -76,27 +76,27 @@
         <canvas id="toothCanvas" class="w-full h-full"></canvas>
     </div>
 
-    <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-30">
-        <div class="absolute w-[320px] h-[320px] md:w-[650px] md:h-[650px] border border-blue-500/20 rounded-full animate-[spin_25s_linear_infinite]"></div>
-        <div class="absolute w-[480px] h-[480px] md:w-[950px] md:h-[950px] border border-white/5 rounded-full animate-[spin_45s_linear_infinite_reverse]"></div>
+    <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-20">
+        <div class="absolute w-[350px] h-[350px] md:w-[750px] md:h-[750px] border border-blue-500/30 rounded-full animate-[spin_30s_linear_infinite]"></div>
+        <div class="absolute w-[550px] h-[550px] md:w-[1100px] md:h-[1100px] border border-white/5 rounded-full animate-[spin_50s_linear_infinite_reverse]"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-20 text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-xl mb-8 animate-fade-in">
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-md mb-8">
             <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
             <span class="text-[9px] font-black uppercase tracking-[0.3em] text-white">Elite Oral Artistry</span>
         </div>
 
-        <h1 class="text-4xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.9] italic mb-8">
+        <h1 class="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] italic mb-8">
             REDEFINING <br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">MODERN SMILES.</span>
         </h1>
 
         <p class="text-slate-400 text-[10px] md:text-sm max-w-lg mx-auto uppercase tracking-widest font-medium mb-12 leading-relaxed px-4">
-            Where advanced bio-technology meets aesthetic precision. <br class="hidden md:block"> Experience the future of dental excellence.
+            Where advanced bio-technology meets aesthetic precision.
         </p>
 
-        <button class="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+        <button class="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl">
             Book Your Transformation
         </button>
     </div>
@@ -107,78 +107,66 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <script>
-    // 1. Scene & Camera Initialization
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
-        canvas: document.getElementById('toothCanvas'), 
-        alpha: true, 
-        antialias: true 
-    });
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('toothCanvas'), alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(window.devicePixelRatio);
 
-    // 2. Premium "Dental Pearl" Material & Geometry
-    // Using a TorusKnot for an organic, abstract dental shape that feels high-end
-    const geometry = new THREE.TorusKnotGeometry(1.8, 0.5, 150, 20); 
+    // 2. THE DESIGN CHANGE: "Organic Soft Mesh"
+    // TorusKnot ki jagah ab hum aik smooth, floating geometry use kar rahe hain jo 'Enamel' jaisi feel de
+    const geometry = new THREE.IcosahedronGeometry(2, 5); // 5 is for high smoothness
     const material = new THREE.MeshPhysicalMaterial({ 
-        color: 0xffffff,          // Base: Clean White
-        metalness: 0.05, 
-        roughness: 0.15,          // Glossy finish like healthy enamel
-        transmission: 0.2,       // Subtle light passage
-        thickness: 0.5,
-        clearcoat: 1.0,          // Mirror-like shine
-        clearcoatRoughness: 0.1
+        color: 0xffffff,
+        metalness: 0,
+        roughness: 0.05,
+        transmission: 0.4,   // Glassy effect
+        thickness: 1,
+        clearcoat: 1.0,      // Shiny finish
+        ior: 1.5
     });
     
-    const dentalMesh = new THREE.Mesh(geometry, material);
-    scene.add(dentalMesh);
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
-    // 3. Professional Lighting (Studio Setup)
-    const mainLight = new THREE.DirectionalLight(0xffffff, 1.5);
-    mainLight.position.set(5, 5, 5);
-    scene.add(mainLight);
+    // 3. Cinematic Studio Lighting
+    const light1 = new THREE.PointLight(0xffffff, 2);
+    light1.position.set(5, 5, 5);
+    scene.add(light1);
 
-    const accentBlue = new THREE.PointLight(0x2563eb, 2); // Blue brand reflection
-    accentBlue.position.set(-5, -3, 2);
-    scene.add(accentBlue);
+    const light2 = new THREE.PointLight(0x2563eb, 3); // Subtle Blue Glow
+    light2.position.set(-5, -5, 2);
+    scene.add(light2);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
-    scene.add(ambient);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
     camera.position.z = 6;
 
-    // 4. Animation Loop (Floating & Rotating)
+    // 4. Smooth Animation
     function animate() {
         requestAnimationFrame(animate);
-        
-        // Constant organic movement
-        dentalMesh.rotation.y += 0.004;
-        dentalMesh.rotation.x += 0.002;
-        
-        // Subtle floating effect
-        dentalMesh.position.y = Math.sin(Date.now() * 0.001) * 0.15;
-        
+        mesh.rotation.y += 0.002;
+        mesh.rotation.x += 0.001;
+        // Floating movement
+        mesh.position.y = Math.sin(Date.now() * 0.001) * 0.1;
         renderer.render(scene, camera);
     }
     animate();
 
-    // 5. GSAP Scroll Parallax (The Professional Hal)
+    // 5. Scroll Parallax
     gsap.registerPlugin(ScrollTrigger);
-    
-    gsap.to(dentalMesh.position, {
+    gsap.to(mesh.position, {
         scrollTrigger: {
             trigger: "#home",
             start: "top top",
             end: "bottom top",
-            scrub: 1.5
+            scrub: 1.2
         },
-        y: -4,           // Moves down into the next section
-        z: -4,           // Moves away to create depth
-        rotationX: 1.5   // Changes angle as you scroll
+        y: -3,
+        z: -4,
+        rotationZ: 1
     });
 
-    // Resize Handler
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
