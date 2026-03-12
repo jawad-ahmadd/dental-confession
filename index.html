@@ -70,137 +70,121 @@
         </div>
     </nav>
 
-    <section id="home" class="relative min-h-screen flex items-center justify-center bg-[#050505] overflow-hidden selection:bg-[#0A84FF] selection:text-white">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<section id="home" class="relative min-h-screen flex items-center justify-center bg-[#050505] overflow-hidden">
     
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <canvas id="toothCanvas" class="w-full h-full"></canvas>
+        <canvas id="toothCanvas" class="w-full h-full opacity-0 transition-opacity duration-700"></canvas>
     </div>
 
     <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-20">
-        <div class="absolute w-[500px] h-[500px] md:w-[1000px] md:h-[1000px] bg-[radial-gradient(circle,#0A84FF20_0%,_#00000000_60%)] rounded-full"></div>
-        <div class="absolute w-[400px] h-[400px] md:w-[850px] md:h-[850px] border border-[#0A84FF]/20 rounded-full animate-[spin_60s_linear_infinite]"></div>
+        <div class="absolute w-[300px] h-[300px] md:w-[900px] md:h-[900px] bg-[radial-gradient(circle,#0A84FF40_0%,#00000000_70%)] rounded-full"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center pt-24 md:pt-0">
-        
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/50 backdrop-blur-xl mb-10">
-            <span class="w-2 h-2 rounded-full bg-[#0A84FF] pulse-dot animate-pulse"></span>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-md mb-8">
+            <span class="w-2 h-2 rounded-full bg-[#0A84FF] shadow-[0_0_10px_#0A84FF] animate-pulse"></span>
             <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-white">Elite Oral Artistry</span>
         </div>
 
-        <h1 class="text-4xl md:text-8xl font-black text-white uppercase tracking-tighter italic mb-10 leading-[1.1] md:leading-[0.85]">
+        <h1 class="text-4xl md:text-8xl font-black text-white uppercase tracking-tighter italic leading-[1.1] md:leading-[0.85] mb-8">
             REDEFINING <br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0A84FF] to-[#5E5CE6]">MODERN SMILES.</span>
         </h1>
 
-        <p class="text-slate-400 text-xs md:text-base max-w-xl mx-auto uppercase tracking-widest font-medium mb-16 leading-relaxed px-4">
+        <p class="text-slate-400 text-[10px] md:text-sm max-w-lg uppercase tracking-[0.2em] font-medium mb-12 px-4 leading-relaxed">
             Where advanced bio-technology meets aesthetic precision. Experience the future.
         </p>
 
-        <button class="px-12 py-5 bg-white text-black text-xs font-black uppercase tracking-[0.4em] rounded-full hover:bg-[#0A84FF] hover:text-white transition-all duration-500 shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+        <button class="px-10 py-5 md:px-14 md:py-6 bg-white text-black text-[10px] md:text-xs font-black uppercase tracking-[0.4em] rounded-full hover:bg-[#0A84FF] hover:text-white transition-all duration-500 shadow-2xl">
             Book Your Transformation
         </button>
     </div>
 </section>
 
 <script>
+    const canvas = document.getElementById('toothCanvas');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
-        canvas: document.getElementById('toothCanvas'), 
-        alpha: true, 
-        antialias: true 
-    });
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // THE DESIGN CHANGE: Custom Molar Anatomy
-    // Maine yahan abstraction ko anatomical details se badal diya hai.
-    const geometry = new THREE.IcosahedronGeometry(2.6, 5); 
+    // CUSTOM ANATOMICAL MOLAR GEOMETRY
+    const geometry = new THREE.IcosahedronGeometry(2.5, 6); 
     const pos = geometry.attributes.position;
     const v = new THREE.Vector3();
 
     for (let i = 0; i < pos.count; i++) {
         v.fromBufferAttribute(pos, i);
-        
-        // Daant ka Crown Part (Wide & Grooved)
+        // Professional Molar Crown (Top Detail)
         if (v.y > 0) {
-            v.y *= 1.35;         // Higher crown
-            v.x *= 1.15;         // Wider molar surface
-            v.z *= 1.15;
-            
-            // Adding anatomical cusps/grooves on top
-            v.y += Math.sin(v.x * 3) * Math.cos(v.z * 3) * 0.15;
+            v.y *= 1.4;
+            v.x *= 1.25;
+            v.z *= 1.25;
+            // Anatomical Cusp Simulation
+            v.y += Math.sin(v.x * 2.5) * Math.cos(v.z * 2.5) * 0.2;
         } 
-        // Daant ka Roots Part (Narrow & Elongated)
+        // Professional Roots (Bottom Taper)
         else {
-            v.y *= 1.7;          // Elongate roots
-            v.x *= 0.6;          // Narrow roots base
-            v.z *= 0.6;
+            v.y *= 1.85;
+            v.x *= 0.65;
+            v.z *= 0.65;
         }
         pos.setXYZ(i, v.x, v.y, v.z);
     }
     geometry.computeVertexNormals();
 
-    // Material logic
+    // Blue Neon Wireframe
     const wireMaterial = new THREE.MeshBasicMaterial({
-        color: 0x0A84FF,        // Matching logo blue
-        wireframe: true,        // Grid Vibe
+        color: 0x0A84FF, // Logo matched blue
+        wireframe: true,
         transparent: true,
-        opacity: 0.6,
+        opacity: 0.55,
         blending: THREE.AdditiveBlending
     });
 
     const tooth = new THREE.Mesh(geometry, wireMaterial);
     scene.add(tooth);
 
-    // Inner Solid Mesh for depth reflection
-    const innerMaterial = new THREE.MeshBasicMaterial({
-        color: 0x004466,
-        transparent: true,
-        opacity: 0.15
-    });
-    const innerTooth = new THREE.Mesh(geometry, innerMaterial);
-    scene.add(innerTooth);
+    // Responsive Camera Setting
+    camera.position.z = window.innerWidth < 768 ? 8.5 : 6;
 
-    camera.position.z = 7;
-
-    // Animation Loop
+    // Animation Loop (Auto-Rotate)
     function animate() {
         requestAnimationFrame(animate);
-        
-        // Auto-Rotation
-        tooth.rotation.y += 0.005;
-        innerTooth.rotation.y += 0.005;
-
-        // Floating Motion
-        const time = Date.now() * 0.001;
-        tooth.position.y = Math.sin(time) * 0.15;
-        innerTooth.position.y = tooth.position.y;
-
+        tooth.rotation.y += 0.005; // Gol gol ghumna
         renderer.render(scene, camera);
     }
-    animate();
 
-    // Scroll Interaction (Parallax)
+    // Scroll Interaction (GSAP)
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to([tooth.position, innerTooth.position], {
+    gsap.to(tooth.position, {
         scrollTrigger: {
             trigger: "#home",
             start: "top top",
             end: "bottom top",
-            scrub: 1
+            scrub: 1.2
         },
-        y: -5,
+        y: -4.5,
         z: -2,
-        rotationX: 1.5
+        rotationX: 1.2
     });
 
-    // Window Resize Handler
+    // Reveal when loaded
+    canvas.style.opacity = '1';
+    animate();
+
+    // Resize Handler
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.z = window.innerWidth < 768 ? 8.5 : 6;
     });
 </script>
     <section id="about" class="relative py-12 md:py-16 bg-[#050505] overflow-hidden">
