@@ -70,50 +70,49 @@
         </div>
     </nav>
 
-    <section id="home" class="relative min-h-screen flex items-center bg-[#050505] overflow-hidden selection:bg-[#0A84FF] selection:text-white pt-24 md:pt-0">
+    <section id="home" class="relative min-h-screen flex items-center bg-[#050505] overflow-hidden pt-20 lg:pt-0">
     
     <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-20">
         <div class="absolute w-[400px] h-[400px] md:w-[800px] md:h-[800px] bg-[radial-gradient(circle,#0A84FF30_0%,_#00000000_70%)] rounded-full"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
-            <div class="text-left order-2 lg:order-1 flex flex-col items-start pt-10 md:pt-0">
-                
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm border-l-4 border-[#0A84FF] bg-white/5 backdrop-blur-sm mb-6">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#0A84FF] pulse-dot animate-pulse"></span>
-                    <span class="text-[9px] md:text-xs font-black uppercase tracking-[0.3em] text-white">Elite Oral Artistry</span>
+            <div class="text-left order-2 lg:order-1 flex flex-col items-start">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 border-l-4 border-[#0A84FF] bg-white/5 backdrop-blur-sm mb-6">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#0A84FF] animate-pulse"></span>
+                    <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-white italic">Elite Oral Artistry</span>
                 </div>
 
-                <h1 class="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] italic mb-10">
+                <h1 class="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] italic mb-8">
                     Redefining <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0A84FF] to-[#5E5CE6]">Modern Smiles.</span>
                 </h1>
 
-                <p class="text-slate-400 text-xs md:text-sm max-w-md uppercase tracking-widest font-medium mb-16 leading-relaxed border-l border-white/10 pl-5">
+                <p class="text-slate-400 text-xs md:text-sm max-w-md uppercase tracking-widest font-medium mb-12 leading-relaxed border-l border-white/10 pl-5">
                     Experience oral transformations driven by advanced bio-technology and expert care.
                 </p>
 
-                <div class="flex flex-wrap gap-4 mt-2">
-                    <button class="px-12 py-5 bg-[#0A84FF] text-white text-[10px] md:text-xs font-black uppercase tracking-[0.3em] rounded-sm hover:bg-white hover:text-[#0A84FF] transition-all duration-500 shadow-xl">
+                <div class="flex flex-wrap gap-4">
+                    <button class="px-10 py-5 bg-[#0A84FF] text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-sm hover:bg-white hover:text-[#0A84FF] transition-all duration-500 shadow-xl">
                         Book Transformation
                     </button>
-                    <button class="px-10 py-5 border border-white/20 text-white text-[10px] md:text-xs font-black uppercase tracking-[0.3em] rounded-sm hover:border-[#0A84FF] transition-all duration-500">
+                    <button class="px-10 py-5 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-sm hover:border-[#0A84FF] transition-all duration-500">
                         View Results
                     </button>
                 </div>
             </div>
 
             <div class="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-                <div class="relative w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full flex items-center justify-center p-4">
-                    <div class="absolute inset-0 border border-white/5 rounded-full scale-100 hover:scale-110 transition-transform duration-700 bg-black/30 backdrop-blur-xl -z-10 shadow-inner"></div>
+                <div class="relative w-[300px] h-[300px] md:w-[600px] md:h-[600px] flex items-center justify-center">
                     
-                    <img src="images/image_6.png" 
-                         alt="Realistic Molar Model" 
-                         class="relative z-10 w-[85%] md:w-full object-contain filter drop-shadow-[0_0_20px_rgba(10,132,255,0.3)] transform hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 border border-white/5 rounded-full scale-110"></div>
+                    <div class="absolute inset-10 md:inset-20 border border-[#0A84FF]/20 rounded-full animate-pulse"></div>
                     
-                    <div class="absolute inset-10 md:inset-20 border border-[#0A84FF]/20 rounded-full animate-pulse-slow"></div>
+                    <img src="jaw-3d.png" 
+                         alt="Realistic 3D Jaw" 
+                         class="relative z-10 w-[90%] md:w-full h-auto object-contain filter drop-shadow-[0_0_40px_rgba(10,132,255,0.4)] animate-float">
                 </div>
             </div>
 
@@ -122,15 +121,12 @@
 </section>
 
 <style>
-    .pulse-dot {
-        box-shadow: 0 0 10px #0A84FF;
+    @keyframes floatJaw {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(2deg); }
     }
-    .animate-pulse-slow {
-        animation: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-    @keyframes pulseSlow {
-        0%, 100% { opacity: 0.1; transform: scale(0.9); }
-        50% { opacity: 0.3; transform: scale(1); }
+    .animate-float {
+        animation: floatJaw 6s ease-in-out infinite;
     }
 </style>
     <section id="about" class="relative py-12 md:py-16 bg-[#050505] overflow-hidden">
