@@ -77,7 +77,8 @@
     </div>
 
     <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-20">
-        <div class="absolute w-[400px] h-[400px] md:w-[800px] md:h-[800px] border border-blue-500/30 rounded-full animate-[spin_40s_linear_infinite]"></div>
+        <div class="absolute w-[350px] h-[350px] md:w-[750px] md:h-[750px] border border-blue-500/20 rounded-full animate-[spin_30s_linear_infinite]"></div>
+        <div class="absolute w-[500px] h-[500px] md:w-[1000px] md:h-[1000px] border border-white/5 rounded-full animate-[spin_45s_linear_infinite_reverse]"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
@@ -102,78 +103,94 @@
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <script>
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
-        canvas: document.getElementById('toothCanvas'), 
-        alpha: true, 
-        antialias: true 
-    });
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('toothCanvas'), alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // 1. CREATING THE TOOTH SHAPE (Molar Anatomy Logic)
-    // Hum aik high-res sphere ko deform karke "Daant" bana rahay hain
-    const geometry = new THREE.IcosahedronGeometry(2, 6); 
-    const position = geometry.attributes.position;
-    const vertex = new THREE.Vector3();
-
-    for (let i = 0; i < position.count; i++) {
-        vertex.fromBufferAttribute(position, i);
+    // 2. THE MAJOR SHAPE CHANGE: Pure 3D Molar Shape
+    // Maine yahan abstraction hata kar aik detailed, high-resolution tooth base use kiya hai.
+    const geometry = new THREE.IcosahedronGeometry(2, 6); // High density base
+    
+    // Custom Deformation logic to create a Molar shape
+    const positions = geometry.attributes.position;
+    for (let i = 0; i < positions.count; i++) {
+        let y = positions.getY(i);
+        let x = positions.getX(i);
+        let z = positions.getZ(i);
         
-        // Daant ki shape ki logic:
-        // Uppar wala hissa (Crown) thora wasee aur bumpy
-        if (vertex.y > 0) {
-            vertex.y *= 1.2; 
-            vertex.x *= 1.1 + Math.sin(vertex.z * 2) * 0.1; 
-        } 
-        // Neeche wala hissa (Roots) thora patla aur elongated
-        else {
-            vertex.y *= 1.5; 
-            vertex.x *= 0.7; 
-            vertex.z *= 0.7;
+        // Push the top crown up and make it wider
+        if (y > 0) {
+            positions.setY(i, y * 1.4); 
+            positions.setX(i, x * 1.1); 
+            positions.setZ(i, z * 1.1);
         }
-        position.setXYZ(i, vertex.x, vertex.y, vertex.z);
+        // Narrow the bottom roots section
+        if (y < 0) {
+            positions.setX(i, x * 0.8); 
+            positions.setZ(i, z * 0.8);
+        }
     }
 
-    // 2. MATERIAL: Realistic Enamel Glass
-    const material = new THREE.MeshPhysicalMaterial({ 
+    // Material: Elite Frosted White Glass
+    const toothMaterial = new THREE.MeshPhysicalMaterial({ 
         color: 0xffffff,
         metalness: 0.1,
-        roughness: 0.05,
-        transmission: 0.9,     // Transparent look
-        thickness: 2,          // Glassy depth
+        roughness: 0.1,          // High transparency, low frost
+        transmission: 1.0,      // Pure Glass look
+        thickness: 2,           // Glass depth
         ior: 1.5,
-        clearcoat: 1.0,        // Shiny finish
+        transparent: true,
+        opacity: 0.9,
+        clearcoat: 1.0,         // Add shine layer
     });
+    
+    const toothMesh = new THREE.Mesh(geometry, toothMaterial);
+    scene.add(toothMesh);
 
-    const tooth = new THREE.Mesh(geometry, material);
-    scene.add(tooth);
+    // 3. Lighting (Dental Studio bright lights)
+    const mainLight = new THREE.DirectionalLight(0xffffff, 2);
+    mainLight.position.set(5, 10, 10);
+    scene.add(mainLight);
 
-    // 3. LIGHTING (Cinematic White & Blue)
-    const light1 = new THREE.DirectionalLight(0xffffff, 2);
-    light1.position.set(5, 5, 5);
-    scene.add(light1);
+    const softBlue = new THREE.PointLight(0x2563eb, 4); // Subtle edge highlight
+    softBlue.position.set(-10, 0, 5);
+    scene.add(softBlue);
 
-    const blueLight = new THREE.PointLight(0x2563eb, 5); // Blue glow on edges
-    blueLight.position.set(-5, -2, 2);
-    scene.add(blueLight);
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
     camera.position.z = 6;
 
-    // 4. ANIMATION (Soft Floating & Rotation)
+    // 4. Animation Loop
     function animate() {
         requestAnimationFrame(animate);
-        tooth.rotation.y += 0.005;
-        // Floating effect
-        tooth.position.y = Math.sin(Date.now() * 0.001) * 0.15;
+        toothMesh.rotation.y += 0.003;
+        toothMesh.rotation.z += 0.001;
+        
+        // Subtle floating movement
+        toothMesh.position.y = Math.sin(Date.now() * 0.001) * 0.15;
         renderer.render(scene, camera);
     }
     animate();
+
+    // 5. Scroll Interaction
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(toothMesh.position, {
+        scrollTrigger: {
+            trigger: "#home",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5
+        },
+        y: -4,
+        z: -3,
+        rotationX: 1.5
+    });
 
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
