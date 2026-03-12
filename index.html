@@ -524,79 +524,81 @@
         .stars-container { opacity: 1 !important; }
     }
 </style>
-    <footer class="relative py-16 bg-[#050505] border-t border-white/5 overflow-hidden">
-    
-    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <footer class="relative bg-[#050505] pt-24 pb-12 overflow-hidden border-t border-white/5">
+    <div class="absolute top-0 left-1/4 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
             
-            <div class="max-w-xs text-center md:text-left">
-                <h2 class="text-2xl font-black text-white uppercase tracking-tighter mb-4">
+            <div class="space-y-6">
+                <a href="index.html" class="text-2xl font-black uppercase tracking-tighter inline-block">
                     Dental <span class="text-blue-500">Confessions.</span>
-                </h2>
-                <p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest font-medium">
-                    Redefining the art of dentistry with precision technology and personal care.
+                </a>
+                <p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest font-medium max-w-xs">
+                    Elevating dental standards through elite technology and high-performance care. Based in Pakistan, serving smiles globally.
                 </p>
+                <div class="flex gap-4 pt-4">
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-600 transition-all">
+                        <i class="fab fa-facebook-f text-xs"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 hover:border-transparent transition-all">
+                        <i class="fab fa-instagram text-xs"></i>
+                    </a>
+                    <a href="https://wa.me/923244404184" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-green-600 hover:border-green-600 transition-all">
+                        <i class="fab fa-whatsapp text-xs"></i>
+                    </a>
+                </div>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
-                <a href="#services" class="hover:text-blue-500 transition-colors">Services</a>
-                <a href="#technology" class="hover:text-blue-500 transition-colors">Tech</a>
-                <a href="#gallery" class="hover:text-blue-500 transition-colors">Gallery</a>
-                <a href="#contact" class="hover:text-blue-500 transition-colors">Contact</a>
+            <div>
+                <h4 class="text-white font-black uppercase tracking-[0.3em] text-[10px] mb-8">Support</h4>
+                <ul class="space-y-4 text-slate-500 text-[11px] font-bold uppercase tracking-widest">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Booking Terms</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Medical Disclaimer</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Patient Rights</a></li>
+                </ul>
             </div>
 
-            <div class="flex gap-4">
-                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-600 transition-all">
-                    <i class="fab fa-facebook-f text-xs"></i>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 hover:border-transparent transition-all">
-                    <i class="fab fa-instagram text-xs"></i>
-                </a>
-                <a href="https://wa.me/923244404184" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-green-600 hover:border-green-600 transition-all">
-                    <i class="fab fa-whatsapp text-xs"></i>
-                </a>
+            <div>
+                <h4 class="text-white font-black uppercase tracking-[0.3em] text-[10px] mb-8">Navigation</h4>
+                <ul class="space-y-4 text-slate-500 text-[11px] font-bold uppercase tracking-widest">
+                    <li><a href="#services" class="hover:text-blue-500 transition-colors">Our Services</a></li>
+                    <li><a href="#technology" class="hover:text-blue-500 transition-colors">Technology</a></li>
+                    <li><a href="#testimonials" class="hover:text-blue-500 transition-colors">Patient Stories</a></li>
+                    <li><a href="contact.html" class="hover:text-blue-500 transition-colors">Contact Us</a></li>
+                </ul>
             </div>
 
+            <div class="space-y-6">
+                <h4 class="text-white font-black uppercase tracking-[0.3em] text-[10px] mb-8">Newsletter</h4>
+                <p class="text-slate-500 text-[10px] uppercase tracking-widest leading-relaxed">Stay connected for dental tips and exclusive offers!</p>
+                <div class="relative group">
+                    <input type="email" placeholder="YOUR EMAIL" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-[10px] font-bold text-white focus:outline-none focus:border-blue-500/50 transition-all">
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition-all">
+                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <hr class="border-white/5 my-12">
-
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p class="text-slate-600 text-[9px] uppercase tracking-widest font-bold">
-                © 2024 Dental Confessions. All Rights Reserved.
+        <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-slate-600 text-[9px] uppercase tracking-[0.3em] font-bold">
+                © 2026 Dental Confessions. All Rights Reserved.
             </p>
-            <div class="flex items-center gap-2">
-                <span class="text-slate-600 text-[9px] uppercase tracking-widest">Designed by</span>
-                <span class="text-white text-[9px] font-black uppercase tracking-widest">Jawad Digital Hub</span>
+            <div class="flex items-center gap-3">
+                <span class="text-slate-600 text-[9px] uppercase tracking-[0.3em] font-bold">Designed by</span>
+                <span class="text-blue-500 text-[9px] font-black uppercase tracking-[0.4em] glow-text">Jawad Digital Hub</span>
             </div>
         </div>
     </div>
 </footer>
-    
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black/90 z-[150] hidden backdrop-blur-sm" onclick="toggleMenu()"></div>
-    
-    <div id="sidebar" class="fixed right-0 top-0 h-full w-[300px] bg-[#080808] z-[200] p-12 flex flex-col border-l border-white/5 sidebar-hidden">
-        <div class="flex justify-between items-center mb-16 text-white">
-            <span class="text-[10px] font-black text-blue-500 tracking-[0.4em] uppercase italic">Menu</span>
-            <button onclick="toggleMenu()" class="text-4xl text-slate-500">&times;</button>
-        </div>
-        
-        <div class="flex flex-col gap-9 text-white">
-            <a href="#home" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Home</a>
-            <a href="#about" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">About</a>
-            <a href="#services" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Services</a>
-            <a href="#technology" onclick="toggleMenu()" class="text-2xl font-black text-blue-500 transition-all">Technology</a>
-            <a href="#" onclick="toggleMenu()" class="text-2xl font-black hover:text-blue-500 transition-all">Book Appointment</a>
-            
-            <div class="mt-8 pt-12 border-t border-white/5">
-                <a href="#" class="bg-blue-600 text-white text-center block py-5 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-blue-900/20">
-                    Contact Us
-                </a>
-            </div>
-        </div>
-    </div>
+
+<style>
+    .glow-text {
+        text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+    }
+</style>
 
     <script>
         function toggleMenu() {
