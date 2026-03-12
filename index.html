@@ -72,43 +72,62 @@
 
     <section id="home" class="relative min-h-screen flex items-center justify-center bg-[#050505] overflow-hidden">
     
-    <div class="absolute inset-0 z-0 opacity-40">
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/your-teeth-model-link/scene.splinecode" class="w-full h-full"></spline-viewer>
-        
+    <div id="tooth-container" class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+        <div class="absolute w-[300px] h-[300px] md:w-[600px] md:h-[600px] border border-blue-500/10 rounded-full animate-[spin_20s_linear_infinite]"></div>
+        <div class="absolute w-[450px] h-[450px] md:w-[850px] md:h-[850px] border border-white/5 rounded-full animate-[spin_35s_linear_infinite_reverse]"></div>
+
+        <div id="hero-tooth" class="relative w-64 h-64 md:w-96 md:h-96 opacity-60">
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/your-tooth-model-id/scene.splinecode"></spline-viewer>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center mt-[-50px]">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+            <span class="text-[9px] font-black uppercase tracking-[0.3em] text-white">Elite Oral Artistry</span>
         </div>
 
-    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#050505] z-1"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 animate-fade-in">
-            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-            <span class="text-[10px] font-black uppercase tracking-[0.3em] text-white">Elite Oral Artistry</span>
-        </div>
-
-        <h1 class="text-4xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] italic mb-8">
+        <h1 class="text-[2.6rem] md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] italic mb-8">
             REDEFINING <br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">MODERN SMILES.</span>
         </h1>
 
-        <p class="text-slate-400 text-xs md:text-base max-w-2xl mx-auto uppercase tracking-widest font-medium mb-10 leading-relaxed">
-            Where advanced bio-technology meets aesthetic precision. <br class="hidden md:block"> 
-            Experience the future of dental excellence in the heart of Dubai.
+        <p class="text-slate-400 text-[10px] md:text-base max-w-xl mx-auto uppercase tracking-widest font-medium mb-12 leading-relaxed px-8">
+            Where advanced bio-technology meets aesthetic precision.
         </p>
 
-        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-            <button class="px-10 py-5 bg-white text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl shadow-white/5">
-                Get Your Consultation
-            </button>
-        </div>
-    </div>
-
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10">
-        <span class="text-[8px] font-black text-white/30 uppercase tracking-[0.5em] rotate-90 mb-4">Scroll</span>
-        <div class="w-[1px] h-12 bg-gradient-to-b from-blue-600 to-transparent"></div>
+        <button class="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-xl">
+            Get Your Consultation
+        </button>
     </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Scroll effect: Teeth moves down and rotates while scrolling
+    gsap.to("#hero-tooth", {
+        scrollTrigger: {
+            trigger: "#home",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5 // Smooth movement
+        },
+        y: 250, // Moves down
+        rotationY: 180, // Spins as you scroll
+        scale: 0.8,
+        opacity: 0.2
+    });
+</script>
+
+<style>
+    /* Prevent horizontal scroll from 3D orbits */
+    body { overflow-x: hidden; }
+</style>
     <section id="about" class="relative py-12 md:py-16 bg-[#050505] overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
