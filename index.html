@@ -3,23 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dental Confessions | Premium Navigation</title>
+    <title>Dental Confessions | Advanced 3D Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        
         html { scroll-behavior: smooth; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; margin: 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; margin: 0; color: white; }
         
-        /* Premium Logo Glow */
         .logo-glow { text-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
-        
-        /* Sidebar Smooth Transition */
         #sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-
-        /* Nav Link Hover Effect */
+        
+        /* Nav Link Hover */
         .nav-link { position: relative; transition: all 0.3s ease; text-decoration: none; color: #94a3b8; }
         .nav-link::after {
             content: ''; position: absolute; width: 0; height: 2px;
@@ -28,25 +23,29 @@
         }
         .nav-link:hover::after { width: 100%; }
         .nav-link:hover { color: white; }
+
+        /* Jaw Animation */
+        @keyframes floatJaw { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .animate-float { animation: floatJaw 6s ease-in-out infinite; }
     </style>
 </head>
 <body>
 
-    <nav class="fixed w-full z-[100] bg-black/40 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+    <nav class="fixed w-full z-[100] bg-black/60 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             
             <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <div class="relative">
                     <div class="absolute -inset-1 bg-blue-600 rounded-xl blur opacity-20 group-hover:opacity-60 transition duration-1000"></div>
-                    <div class="relative w-11 h-11 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-2xl border border-white/10">
-                        <i class="fas fa-tooth text-white text-xl"></i>
+                    <div class="relative w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center border border-white/10">
+                        <i class="fas fa-tooth text-white text-lg"></i>
                     </div>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-xl font-extrabold tracking-tighter uppercase text-white logo-glow leading-none">
+                    <span class="text-lg font-extrabold tracking-tighter uppercase text-white logo-glow leading-none">
                         Dental <span class="text-blue-500">Confessions</span>
                     </span>
-                    <span class="text-[8px] font-black tracking-[0.4em] text-blue-400 uppercase mt-1">Advanced 3D Studio</span>
+                    <span class="text-[7px] font-black tracking-[0.4em] text-blue-400 uppercase mt-1">Advanced 3D Studio</span>
                 </div>
             </div>
 
@@ -57,12 +56,12 @@
                 <a href="#technology" class="nav-link text-blue-400">Technology</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
                 <a href="https://wa.me/923244404184" target="_blank" class="nav-link text-white">Book Appointment</a>
-                <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-full font-black hover:bg-blue-500 transition-all border border-blue-400/20 no-underline shadow-[0_10px_30px_rgba(37,99,235,0.3)]">
+                <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full font-black hover:bg-blue-500 transition-all border border-blue-400/20 no-underline shadow-[0_10px_20px_rgba(37,99,235,0.2)]">
                     Contact Us
                 </a>
             </div>
 
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl p-2 focus:outline-none relative z-[110]">
+            <button onclick="toggleMenu()" class="lg:hidden text-white text-2xl p-2 relative z-[110]">
                 <i class="fas fa-bars-staggered" id="menuIcon"></i>
             </button>
         </div>
@@ -70,35 +69,28 @@
 
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-md z-[101] hidden" onclick="toggleMenu()"></div>
     <div id="sidebar" class="fixed top-0 right-0 h-full w-[80%] bg-[#0A0A0A] border-l border-white/10 z-[105] p-10 flex flex-col gap-8 translate-x-full lg:hidden">
-        <div class="flex flex-col gap-8 mt-24">
-            <a href="#home" onclick="toggleMenu()" class="text-2xl font-black text-white uppercase italic no-underline">Home</a>
-            <a href="#about" onclick="toggleMenu()" class="text-2xl font-black text-white uppercase italic no-underline">About</a>
-            <a href="#services" onclick="toggleMenu()" class="text-2xl font-black text-white uppercase italic no-underline">Services</a>
-            <a href="#technology" onclick="toggleMenu()" class="text-2xl font-black text-white uppercase italic no-underline">Technology</a>
-            <a href="#gallery" onclick="toggleMenu()" class="text-2xl font-black text-white uppercase italic no-underline">Gallery</a>
+        <div class="flex flex-col gap-6 mt-20">
+            <a href="#home" onclick="toggleMenu()" class="text-xl font-black text-white uppercase italic no-underline">Home</a>
+            <a href="#about" onclick="toggleMenu()" class="text-xl font-black text-white uppercase italic no-underline">About</a>
+            <a href="#services" onclick="toggleMenu()" class="text-xl font-black text-white uppercase italic no-underline">Services</a>
+            <a href="#technology" onclick="toggleMenu()" class="text-xl font-black text-white uppercase italic no-underline text-blue-400">Technology</a>
+            <a href="#gallery" onclick="toggleMenu()" class="text-xl font-black text-white uppercase italic no-underline">Gallery</a>
             <hr class="border-white/10">
-            <a href="https://wa.me/923244404184" target="_blank" class="w-full text-center py-5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full no-underline shadow-lg">Book Appointment</a>
+            <a href="https://wa.me/923244404184" target="_blank" class="w-full text-center py-4 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full no-underline">Book Appointment</a>
         </div>
     </div>
-
-    <main class="pt-24 min-h-screen">
-        </main>
-
     <script>
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
             const icon = document.getElementById('menuIcon');
+            sidebar.classList.toggle('translate-x-full');
+            overlay.classList.toggle('hidden');
             
-            // Check if sidebar is hidden
-            if (sidebar.classList.contains('translate-x-full')) {
-                sidebar.classList.remove('translate-x-full'); // Slide in
-                overlay.classList.remove('hidden');           // Show overlay
-                icon.classList.replace('fa-bars-staggered', 'fa-xmark'); // Icon change
+            if (!sidebar.classList.contains('translate-x-full')) {
+                icon.classList.replace('fa-bars-staggered', 'fa-xmark');
             } else {
-                sidebar.classList.add('translate-x-full');    // Slide out
-                overlay.classList.add('hidden');              // Hide overlay
-                icon.classList.replace('fa-xmark', 'fa-bars-staggered'); // Icon change
+                icon.classList.replace('fa-xmark', 'fa-bars-staggered');
             }
         }
     </script>
