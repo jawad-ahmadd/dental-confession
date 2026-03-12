@@ -74,129 +74,114 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<section id="home" class="relative min-h-screen flex items-center bg-[#050505] overflow-hidden selection:bg-[#0A84FF] selection:text-white">
+<section id="home" class="relative min-h-screen flex items-center justify-center bg-[#050505] overflow-hidden selection:bg-[#0A84FF] selection:text-white">
     
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <canvas id="toothCanvas" class="w-full h-full opacity-0 transition-opacity duration-1000"></canvas>
     </div>
 
-    <div class="absolute inset-0 z-1 pointer-events-none">
-        <div class="absolute right-0 top-0 w-[60%] h-full bg-[radial-gradient(circle_at_70%_50%,#0A84FF15_0%,#00000000_70%)] opacity-60"></div>
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-20">
+        <div class="absolute w-[400px] h-[400px] md:w-[800px] md:h-[800px] border border-[#0A84FF]/20 rounded-full animate-[spin_60s_linear_infinite]"></div>
     </div>
 
-    <div class="container mx-auto px-6 md:px-12 relative z-10">
-        <div class="max-w-4xl">
-            <div class="inline-flex items-center gap-3 px-3 py-1.5 rounded-sm border-l-2 border-[#0A84FF] bg-white/5 backdrop-blur-sm mb-10">
-                <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#0A84FF]">Dental Excellence — 2026</span>
-            </div>
-
-            <h1 class="text-5xl md:text-9xl font-extrabold text-white uppercase tracking-tight leading-[0.9] mb-10">
-                Precision <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-[#0A84FF]/50">Bio-Aesthetics.</span>
-            </h1>
-
-            <div class="flex flex-col md:flex-row gap-8 items-start md:items-center">
-                <p class="text-slate-400 text-xs md:text-sm max-w-sm uppercase tracking-widest leading-loose border-l border-white/10 pl-6">
-                    Redefining the standard of oral healthcare through advanced 3D diagnostics and surgical precision.
-                </p>
-                
-                <button class="group relative px-10 py-5 overflow-hidden border border-white/20 rounded-sm transition-all duration-500 hover:border-[#0A84FF]">
-                    <span class="relative z-10 text-white text-[10px] font-black uppercase tracking-[0.3em]">Start Consultation</span>
-                    <div class="absolute inset-0 bg-[#0A84FF] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                </button>
-            </div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-md mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#0A84FF] animate-pulse shadow-[0_0_8px_#0A84FF]"></span>
+            <span class="text-[9px] font-black uppercase tracking-[0.3em] text-white">Elite Oral Artistry</span>
         </div>
-    </div>
 
-    <div class="absolute bottom-10 left-6 md:left-12 z-10 hidden md:flex gap-12">
-        <div class="flex flex-col gap-1">
-            <span class="text-[8px] text-slate-500 uppercase tracking-widest">Technology</span>
-            <span class="text-[10px] text-white font-bold uppercase">Guided Surgery</span>
-        </div>
-        <div class="flex flex-col gap-1">
-            <span class="text-[8px] text-slate-500 uppercase tracking-widest">Aesthetics</span>
-            <span class="text-[10px] text-white font-bold uppercase">Natural Restoration</span>
-        </div>
+        <h1 class="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] italic mb-8">
+            REDEFINING <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0A84FF] to-[#5E5CE6]">MODERN SMILES.</span>
+        </h1>
+
+        <button class="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-[#0A84FF] hover:text-white transition-all duration-500 shadow-2xl">
+            Book Your Transformation
+        </button>
     </div>
 </section>
 
 <script>
-    const canvas = document.getElementById('toothCanvas');
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('toothCanvas'), alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // REFINED ANATOMICAL MOLAR
-    const geometry = new THREE.IcosahedronGeometry(2.6, 6); 
-    const pos = geometry.attributes.position;
+    // PROFESSIONAL ANATOMICAL SHAPE
+    // Hum aik high-density box ko deform kar rahay hain exact dental anatomy ke liye
+    const geometry = new THREE.BoxGeometry(2.2, 3.2, 2.2, 12, 12, 12); 
+    const position = geometry.attributes.position;
     const v = new THREE.Vector3();
 
-    for (let i = 0; i < pos.count; i++) {
-        v.fromBufferAttribute(pos, i);
+    for (let i = 0; i < position.count; i++) {
+        v.fromBufferAttribute(position, i);
+        
+        // CROWN REFINEMENT (Top of Molar)
         if (v.y > 0) {
-            v.y *= 1.4; v.x *= 1.25; v.z *= 1.25;
-            v.y += Math.sin(v.x * 2.5) * Math.cos(v.z * 2.5) * 0.15;
-        } else {
-            v.y *= 1.8; v.x *= 0.65; v.z *= 0.65;
+            // Wider Top
+            v.x *= 1.2 + (v.y * 0.1);
+            v.z *= 1.2 + (v.y * 0.1);
+            
+            // Professional 4-Cusp Design (Jo real daant ke upar bumps hotay hain)
+            let cusps = 0.3 * Math.cos(v.x * 2.5) * Math.sin(v.z * 2.5);
+            v.y += cusps + (Math.abs(v.x * v.z) * 0.15);
+        } 
+        // ROOT REFINEMENT (Bottom Taper)
+        else {
+            // Tapering the base
+            let taper = 0.65 - (v.y * 0.2);
+            v.x *= taper;
+            v.z *= taper;
+            v.y *= 1.6; // Elongated roots
         }
-        pos.setXYZ(i, v.x, v.y, v.z);
+        position.setXYZ(i, v.x, v.y, v.z);
     }
     geometry.computeVertexNormals();
 
-    const wireMaterial = new THREE.MeshBasicMaterial({
-        color: 0x0A84FF, // Exact Logo Blue
+    // Blue Neon Grid Material (Match Logo)
+    const material = new THREE.MeshBasicMaterial({
+        color: 0x0A84FF,
         wireframe: true,
         transparent: true,
-        opacity: 0.45,
+        opacity: 0.5,
         blending: THREE.AdditiveBlending
     });
 
-    const tooth = new THREE.Mesh(geometry, wireMaterial);
+    const tooth = new THREE.Mesh(geometry, material);
     scene.add(tooth);
 
-    // Position Tooth for Desktop Editorial Design
-    if (window.innerWidth > 768) {
-        tooth.position.x = 3.5; // Shift to the right
-    } else {
-        tooth.position.y = -1; // Lower for mobile visibility
-    }
-
-    camera.position.z = 8;
+    camera.position.z = 7.5;
 
     function animate() {
         requestAnimationFrame(animate);
-        tooth.rotation.y += 0.003; 
-        tooth.rotation.x += 0.001; 
+        // Professional Smooth Rotation
+        tooth.rotation.y += 0.004;
+        tooth.position.y = Math.sin(Date.now() * 0.001) * 0.15;
         renderer.render(scene, camera);
     }
+    animate();
 
+    // Scroll Effect (GSAP)
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(tooth.position, {
         scrollTrigger: {
             trigger: "#home",
             start: "top top",
             end: "bottom top",
-            scrub: 1
+            scrub: 1.2
         },
-        y: -3,
-        x: (window.innerWidth > 768) ? 5 : 0,
-        z: -2
+        y: -4,
+        z: -2,
+        rotationX: 1.2
     });
 
-    canvas.style.opacity = '1';
-    animate();
-
+    // Final Setup
+    document.getElementById('toothCanvas').style.opacity = '1';
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        // Responsive Position Fix
-        if (window.innerWidth > 768) { tooth.position.x = 3.5; tooth.position.y = 0; }
-        else { tooth.position.x = 0; tooth.position.y = -1; }
     });
 </script>
     <section id="about" class="relative py-12 md:py-16 bg-[#050505] overflow-hidden">
