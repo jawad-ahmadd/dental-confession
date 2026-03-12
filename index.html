@@ -76,7 +76,7 @@
         <canvas id="toothCanvas" class="w-full h-full"></canvas>
     </div>
 
-    <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-20">
+    <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-10">
         <div class="absolute w-[400px] h-[400px] md:w-[800px] md:h-[800px] border border-blue-500/20 rounded-full animate-[spin_60s_linear_infinite]"></div>
     </div>
 
@@ -100,71 +100,89 @@
 <script>
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('toothCanvas'), alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ 
+        canvas: document.getElementById('toothCanvas'), 
+        alpha: true, 
+        antialias: true 
+    });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
 
-    // 1. THE EXACT TOOTH GEOMETRY
-    // Hum aik box ko subdivide karke realistic molar banayenge
-    const geometry = new THREE.BoxGeometry(2.5, 3, 2.5, 10, 10, 10);
-    const positions = geometry.attributes.position;
-    const vec = new THREE.Vector3();
+    // 1. THE EXACT NEON WIREFRAME TOOTH
+    // Molar shape geometry build kar rahe hain
+    const geometry = new THREE.IcosahedronGeometry(2.5, 4); 
+    const position = geometry.attributes.position;
+    const vertex = new THREE.Vector3();
 
-    for (let i = 0; i < positions.count; i++) {
-        vec.fromBufferAttribute(positions, i);
-        
-        // CROWN LOGIC: Top par 4 cusps (daant ke kone)
-        if (vec.y > 0) {
-            let twist = Math.sin(vec.x * 2) * Math.cos(vec.z * 2) * 0.4;
-            vec.y += twist;
-            vec.x *= 1.1; 
-            vec.z *= 1.1;
+    for (let i = 0; i < position.count; i++) {
+        vertex.fromBufferAttribute(position, i);
+        // Crown Cusps (Top part)
+        if (vertex.y > 0) {
+            vertex.y *= 1.3;
+            vertex.x *= 1.1;
         } 
-        // ROOT LOGIC: Neeche se patla aur split
+        // Roots (Bottom part)
         else {
-            vec.x *= (1 + vec.y * 0.5);
-            vec.z *= (1 + vec.y * 0.5);
-            vec.y *= 1.4;
+            vertex.y *= 1.6;
+            vertex.x *= 0.65;
+            vertex.z *= 0.65;
         }
-        positions.setXYZ(i, vec.x, vec.y, vec.z);
+        position.setXYZ(i, vertex.x, vertex.y, vertex.z);
     }
-    geometry.computeVertexNormals();
 
-    // 2. MATERIAL: Pure Transparent Glass
-    const material = new THREE.MeshPhysicalMaterial({
-        color: 0xffffff,
-        metalness: 0,
-        roughness: 0.05,
-        transmission: 1.0,     // 100% Transparent
-        ior: 1.5,              // Real glass index
-        thickness: 2.5,
-        specularIntensity: 1,
+    // 2. MATERIAL: Neon Blue Grid / Wireframe
+    const wireframeMaterial = new THREE.MeshBasicMaterial({
+        color: 0x00f2ff,        // Exact Neon Blue color
+        wireframe: true,        // Makes it look like the grid image
         transparent: true,
-        opacity: 0.8
+        opacity: 0.6,
+        blending: THREE.AdditiveBlending // Makes it glow
     });
 
-    const tooth = new THREE.Mesh(geometry, material);
+    const tooth = new THREE.Mesh(geometry, wireframeMaterial);
     scene.add(tooth);
 
-    // 3. LIGHTING (Studio Setup)
-    const topLight = new THREE.DirectionalLight(0xffffff, 2);
-    topLight.position.set(5, 10, 5);
-    scene.add(topLight);
-
-    const blueGlow = new THREE.PointLight(0x2563eb, 5); // Realistic blue reflection
-    blueGlow.position.set(-5, -2, 5);
-    scene.add(blueGlow);
+    // Add a subtle inner glow (Solid Mesh)
+    const innerMaterial = new THREE.MeshBasicMaterial({
+        color: 0x004466,
+        transparent: true,
+        opacity: 0.2
+    });
+    const innerTooth = new THREE.Mesh(geometry, innerMaterial);
+    scene.add(innerTooth);
 
     camera.position.z = 7;
 
+    // 3. ANIMATION: Auto-Rotate & Float
     function animate() {
         requestAnimationFrame(animate);
-        tooth.rotation.y += 0.004;
-        tooth.position.y = Math.sin(Date.now() * 0.001) * 0.2; // Smooth floating
+        
+        // Gol gol ghumna (Idle rotation)
+        tooth.rotation.y += 0.005;
+        innerTooth.rotation.y += 0.005;
+
+        // Floating effect
+        tooth.position.y = Math.sin(Date.now() * 0.001) * 0.15;
+        innerTooth.position.y = tooth.position.y;
+
         renderer.render(scene, camera);
     }
     animate();
 
-    // Resize logic
+    // 4. SCROLL INTERACTION: Scroll up/down movement
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to([tooth.position, innerTooth.position], {
+        scrollTrigger: {
+            trigger: "#home",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1
+        },
+        y: -5,  // Scroll karne par neeche/upar move hoga
+        z: -2,
+        rotationX: 1.5
+    });
+
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
