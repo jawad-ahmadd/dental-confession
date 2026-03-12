@@ -72,20 +72,17 @@
 
     <section id="home" class="relative min-h-screen flex items-center justify-center bg-[#050505] overflow-hidden">
     
-    <div id="tooth-parallax-wrap" class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-        
-        <div class="absolute w-[320px] h-[320px] md:w-[650px] md:h-[650px] border border-blue-500/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
-        <div class="absolute w-[450px] h-[450px] md:w-[850px] md:h-[850px] border border-white/5 rounded-full animate-[spin_35s_linear_infinite_reverse]"></div>
-
-        <div id="hero-3d-tooth" class="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] opacity-80 transition-opacity duration-1000">
-            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"></script>
-            <spline-viewer url="https://prod.spline.design/YOUR_MODEL_LINK/scene.splinecode"></spline-viewer>
-        </div>
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <canvas id="toothCanvas" class="w-full h-full"></canvas>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-md mb-8 animate-fade-in">
+    <div class="absolute inset-0 z-1 flex items-center justify-center pointer-events-none opacity-20">
+        <div class="absolute w-[350px] h-[350px] md:w-[700px] md:h-[700px] border border-blue-500 rounded-full animate-[spin_20s_linear_infinite]"></div>
+        <div class="absolute w-[500px] h-[500px] md:w-[1000px] md:h-[1000px] border border-white/10 rounded-full animate-[spin_35s_linear_infinite_reverse]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-20 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/50 backdrop-blur-xl mb-8">
             <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
             <span class="text-[9px] font-black uppercase tracking-[0.3em] text-white">Elite Oral Artistry</span>
         </div>
@@ -95,38 +92,85 @@
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">MODERN SMILES.</span>
         </h1>
 
-        <p class="text-slate-400 text-[10px] md:text-base max-w-xl mx-auto uppercase tracking-widest font-medium mb-12 leading-relaxed px-4">
-            Where advanced bio-technology meets aesthetic precision. <br class="hidden md:block"> Experience the future of dental excellence.
+        <p class="text-slate-400 text-[10px] md:text-sm max-w-lg mx-auto uppercase tracking-widest font-medium mb-12 leading-relaxed px-4">
+            Where advanced bio-technology meets aesthetic precision. Experience the future.
         </p>
 
-        <button class="group relative px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full overflow-hidden transition-all duration-500 hover:text-white">
-            <span class="relative z-10">Book Your Transformation</span>
-            <div class="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+        <button class="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl">
+            Book Your Transformation
         </button>
     </div>
-
-    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#050505] to-transparent z-1"></div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <script>
-    gsap.registerPlugin(ScrollTrigger);
+    // 1. Setup Three.js Scene
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('toothCanvas'), alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // Optimized Scroll Animation
-    gsap.to("#hero-3d-tooth", {
+    // 2. Create a Realistic Tooth Shape (Placeholder Geometry for testing)
+    // Asli project mein yahan .gltf model load hota hai, filhal hum ek cool 3D shape dikhayenge
+    const geometry = new THREE.IcosahedronGeometry(2, 0); 
+    const material = new THREE.MeshPhongMaterial({ 
+        color: 0x2563eb, 
+        wireframe: true,
+        emissive: 0x001233,
+        shininess: 100
+    });
+    const tooth = new THREE.Mesh(geometry, material);
+    scene.add(tooth);
+
+    // 3. Lights
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(5, 5, 5).normalize();
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x404040));
+
+    camera.position.z = 5;
+
+    // 4. Animation Loop (Auto-Rotate)
+    function animate() {
+        requestAnimationFrame(animate);
+        tooth.rotation.y += 0.005;
+        tooth.rotation.x += 0.002;
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    // 5. GSAP Scroll Animation (The Permanent Hal)
+    gsap.registerPlugin(ScrollTrigger);
+    
+    gsap.to(tooth.position, {
         scrollTrigger: {
             trigger: "#home",
             start: "top top",
             end: "bottom top",
-            scrub: 1.5 // Smoother lag effect
+            scrub: 1
         },
-        y: 200,        // Move down
-        rotation: 30,  // Tilt
-        scale: 0.8,    // Shrink slightly
-        opacity: 0.2,  // Fade out
-        ease: "none"
+        y: -5, // Moves down on scroll
+        z: -2, // Moves away
+    });
+
+    gsap.to(tooth.rotation, {
+        scrollTrigger: {
+            trigger: "#home",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1
+        },
+        y: Math.PI * 2 // Full rotation
+    });
+
+    // Resize Handle
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
     });
 </script>
     <section id="about" class="relative py-12 md:py-16 bg-[#050505] overflow-hidden">
