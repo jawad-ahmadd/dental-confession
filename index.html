@@ -105,85 +105,110 @@
         </div>
     </section>
 
-    <section id="about" class="relative py-12 md:py-20 bg-[#050505] overflow-hidden">
+    <section id="about" class="relative py-12 md:py-16 bg-[#050505] overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             
             <div class="relative group">
-                <div class="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
-                    <img src="about-image.jpg" alt="Studio" 
-                         class="w-full h-auto object-cover transition-all duration-700 
-                                grayscale-0 md:grayscale group-hover:grayscale-0 scale-105 group-hover:scale-100">
+                <div class="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] md:aspect-square">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000" 
+                         alt="Dental Studio" 
+                         class="w-full h-full object-cover transition-all duration-1000 grayscale-0 md:grayscale group-hover:grayscale-0 scale-105 group-hover:scale-100">
                     
-                    <div class="absolute bottom-6 left-6 bg-[#111]/90 backdrop-blur-md p-6 rounded-3xl border border-white/5 shadow-xl">
-                        <p class="text-3xl font-black text-white leading-none">15+</p>
+                    <div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md p-6 rounded-3xl border border-white/10 shadow-xl">
+                        <p class="text-3xl font-black text-white leading-none italic">15+</p>
                         <p class="text-[8px] font-bold tracking-[0.2em] text-blue-500 uppercase mt-1">Years of Innovation</p>
                     </div>
                 </div>
             </div>
 
-            <div class="space-y-8">
-                <h1 class="text-5xl md:text-6xl font-black text-white uppercase tracking-tighter leading-[0.9] italic">
+            <div class="space-y-6 md:pl-6">
+                <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-blue-500">Innovation First</h2>
+                <h1 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-[0.9] italic">
                     Crafting <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">Unspoken</span> <br>
                     Confidence.
                 </h1>
                 
                 <p class="text-slate-400 text-sm leading-relaxed max-w-md uppercase tracking-wide font-medium">
-                    At Dental Confessions, we don't just fix teeth; we engineer smiles using clinical precision and artistic intuition.
+                    At Dental Confessions, we don't just fix teeth; we engineer smiles using clinical precision, AI technology, and artistic intuition.
                 </p>
 
-                <div class="grid grid-cols-2 gap-6 pt-4">
-                    <div class="space-y-3">
-                        <div class="w-10 h-10 bg-blue-600/10 rounded-xl flex items-center justify-center border border-blue-500/20">
-                            <i class="fas fa-microscope text-blue-500 text-sm"></i>
-                        </div>
-                        <h4 class="text-xs font-black uppercase text-white tracking-widest">AI Precision</h4>
-                        <p class="text-[10px] text-slate-500 leading-tight uppercase font-bold">Digitally mapped for 100% accuracy.</p>
+                <div class="grid grid-cols-2 gap-6 pt-4 border-t border-white/5">
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-black uppercase text-white tracking-widest">Digital DNA</h4>
+                        <p class="text-[9px] text-slate-500 leading-tight uppercase font-bold tracking-widest">100% Computerized Planning</p>
                     </div>
-                    <div class="space-y-3">
-                        <div class="w-10 h-10 bg-blue-600/10 rounded-xl flex items-center justify-center border border-blue-500/20">
-                            <i class="fas fa-magic text-blue-500 text-sm"></i>
-                        </div>
-                        <h4 class="text-xs font-black uppercase text-white tracking-widest">Smile Design</h4>
-                        <p class="text-[10px] text-slate-500 leading-tight uppercase font-bold">Tailored to your facial structure.</p>
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-black uppercase text-white tracking-widest">Elite Studio</h4>
+                        <p class="text-[9px] text-slate-500 leading-tight uppercase font-bold tracking-widest">Global Dental Standards</p>
                     </div>
                 </div>
 
-                <button onclick="toggleModal('story-modal')" class="flex items-center gap-4 group pt-6">
-                    <span class="text-[10px] font-black uppercase tracking-[0.4em] text-white group-hover:text-blue-500 transition-colors">Discover Our Story</span>
-                    <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all">
-                        <i class="fas fa-arrow-right text-[10px] text-white"></i>
+                <button onclick="toggleModal('story-modal')" class="flex items-center gap-6 group pt-4">
+                    <div class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-blue-500 transition-all relative">
+                        <i class="fas fa-play text-[10px] text-white group-hover:text-blue-500"></i>
+                        <div class="absolute inset-0 rounded-full bg-blue-600/20 animate-ping opacity-0 group-hover:opacity-100"></div>
                     </div>
+                    <span class="text-[11px] font-black uppercase tracking-[0.4em] text-white group-hover:text-blue-500 transition-colors">Discover Our Story</span>
                 </button>
             </div>
         </div>
     </div>
 </section>
 
-<div id="story-modal" class="fixed inset-0 z-[200] hidden items-center justify-center px-6">
-    <div class="absolute inset-0 bg-black/90 backdrop-blur-xl" onclick="toggleModal('story-modal')"></div>
-    <div class="relative bg-[#0a0a0a] border border-white/10 w-full max-w-2xl rounded-[3rem] p-10 md:p-16 overflow-hidden shadow-2xl">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
-        
-        <button onclick="toggleModal('story-modal')" class="absolute top-8 right-8 text-slate-500 hover:text-white transition-colors">
-            <i class="fas fa-times text-xl"></i>
+<div id="story-modal" class="fixed inset-0 z-[250] hidden items-center justify-center px-6">
+    <div class="absolute inset-0 bg-black/95 backdrop-blur-2xl" onclick="toggleModal('story-modal')"></div>
+    
+    <div class="relative bg-[#0a0a0a] border border-white/10 w-full max-w-2xl rounded-[3rem] p-8 md:p-14 overflow-hidden shadow-2xl max-h-[85vh] overflow-y-auto custom-scrollbar">
+        <button onclick="toggleModal('story-modal')" class="absolute top-8 right-8 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-red-600 transition-all z-20">
+            <i class="fas fa-times"></i>
         </button>
 
-        <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-blue-500 mb-6">The Legacy</h2>
-        <h3 class="text-4xl font-black text-white uppercase tracking-tighter italic mb-8">Our <span class="text-blue-500">Story.</span></h3>
-        
-        <div class="space-y-6 text-slate-400 text-sm leading-relaxed uppercase tracking-wider font-medium">
-            <p>Dental Confessions began with a simple vision: to bridge the gap between medical science and aesthetic art. Founded by a team of visionary specialists, we've spent 15 years perfecting the 3D Bio-tech workflow.</p>
-            <p>Our studio in Pakistan serves as a global hub for patients seeking more than just a checkup—they seek a transformation that feels as natural as it looks.</p>
-        </div>
+        <div class="relative z-10">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-blue-500 mb-6">The Legacy Since 2009</h2>
+            <h3 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter italic mb-8 leading-tight">
+                Evolution of <br> <span class="text-blue-500">Dental Art.</span>
+            </h3>
+            
+            <div class="space-y-6 text-slate-400 text-sm leading-relaxed uppercase tracking-wider font-medium">
+                <p>
+                    <span class="text-white font-black">Dental Confessions</span> ki bunyad is soch par rakhi gayi thi ke dentistry sirf ilaaj nahi, balkay aik fun (art) hai. Hum ne mehsus kiya ke log dentist ke paas janay se darrte hain, isliye hum ne technology aur luxury ka aik aisa milap banaya jahan har patient khud ko secure aur relax mehsus kare.
+                </p>
+                
+                <p>
+                    Pichlay 15 saalon mein, hum ne hamesha conventional tareeqon ko challenge kiya hai. Hum Pakistan ke un chand studios mein se aik hain jo mukammal taur par **3D Digital Workflow** par kaam karte hain. Humara safar har din behtar ban'ne ka raha hai.
+                </p>
 
-        <div class="mt-12 flex gap-4">
-            <div class="h-[1px] flex-1 bg-white/5 self-center"></div>
-            <span class="text-[8px] font-black text-blue-500 uppercase tracking-[0.4em]">Advanced 3D Studio</span>
+                <p class="border-l-2 border-blue-600 pl-6 italic bg-blue-600/5 py-6 rounded-r-2xl text-blue-100">
+                    "Humara maqsad sirf aap ke daant theek karna nahi, balkay aap ke chehray ki symmetry aur aap ke andar ke chuppay huay confidence ko bahar lana hai."
+                </p>
+
+                <p>
+                    Aaj, hum Advanced 3D Mapping, Digital Smile Design, aur AI-integrated diagnostics ka istamal kartay hain taake har treatment pain-free aur accurate ho. Hum har patient ko aik customer nahi, balkay aik "Legacy" samajhtay hain—aur har legacy ka end aik perfect smile par hona chahiye.
+                </p>
+
+                <p>
+                    Dental Confessions aaj sirf aik clinic nahi, balkay aik aisi jagah hai jahan science aur beauty milkar aap ki personality ko naya janam detay hain. Humne hazaron smiles transform ki hain, aur ab hum tayyar hain aap ki smile ko aik masterpiece bananay ke liye.
+                </p>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-[1px] bg-blue-500"></div>
+                    <span class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Jawad Digital Hub x Dental Confessions</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<style>
+    /* Custom Scrollbar for Modal */
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #050505; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
+</style>
 
 <script>
     function toggleModal(id) {
