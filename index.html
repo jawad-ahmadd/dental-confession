@@ -74,10 +74,10 @@
     
     <div id="tooth-parallax-wrap" class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
         
-        <div class="absolute w-[350px] h-[350px] md:w-[650px] md:h-[650px] border border-blue-500/10 rounded-full animate-[spin_25s_linear_infinite]"></div>
-        <div class="absolute w-[500px] h-[500px] md:w-[900px] md:h-[900px] border border-white/5 rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
+        <div class="absolute w-[320px] h-[320px] md:w-[650px] md:h-[650px] border border-blue-500/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
+        <div class="absolute w-[450px] h-[450px] md:w-[850px] md:h-[850px] border border-white/5 rounded-full animate-[spin_35s_linear_infinite_reverse]"></div>
 
-        <div id="hero-3d-tooth" class="relative w-[280px] h-[280px] md:w-[450px] md:h-[450px] opacity-70">
+        <div id="hero-3d-tooth" class="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] opacity-80 transition-opacity duration-1000">
             <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"></script>
             <spline-viewer url="https://prod.spline.design/YOUR_MODEL_LINK/scene.splinecode"></spline-viewer>
         </div>
@@ -85,24 +85,27 @@
 
     <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
         
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-md mb-8 animate-fade-in">
             <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
             <span class="text-[9px] font-black uppercase tracking-[0.3em] text-white">Elite Oral Artistry</span>
         </div>
 
-        <h1 class="text-4xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] italic mb-8">
+        <h1 class="text-4xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.9] italic mb-8">
             REDEFINING <br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">MODERN SMILES.</span>
         </h1>
 
-        <p class="text-slate-400 text-[10px] md:text-base max-w-xl mx-auto uppercase tracking-widest font-medium mb-12 leading-relaxed">
-            Where advanced bio-technology meets aesthetic precision.
+        <p class="text-slate-400 text-[10px] md:text-base max-w-xl mx-auto uppercase tracking-widest font-medium mb-12 leading-relaxed px-4">
+            Where advanced bio-technology meets aesthetic precision. <br class="hidden md:block"> Experience the future of dental excellence.
         </p>
 
-        <button class="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl">
-            Book Your Transformation
+        <button class="group relative px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-full overflow-hidden transition-all duration-500 hover:text-white">
+            <span class="relative z-10">Book Your Transformation</span>
+            <div class="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
         </button>
     </div>
+
+    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#050505] to-transparent z-1"></div>
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -111,18 +114,19 @@
 <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // This makes the tooth move DOWN and ROTATE as you scroll
+    // Optimized Scroll Animation
     gsap.to("#hero-3d-tooth", {
         scrollTrigger: {
             trigger: "#home",
             start: "top top",
             end: "bottom top",
-            scrub: 1.2
+            scrub: 1.5 // Smoother lag effect
         },
-        y: 300,        // Moves down on scroll
-        rotation: 45,  // Slight tilt while moving
-        scale: 0.7,    // Gets smaller
-        opacity: 0.1   // Fades out
+        y: 200,        // Move down
+        rotation: 30,  // Tilt
+        scale: 0.8,    // Shrink slightly
+        opacity: 0.2,  // Fade out
+        ease: "none"
     });
 </script>
     <section id="about" class="relative py-12 md:py-16 bg-[#050505] overflow-hidden">
