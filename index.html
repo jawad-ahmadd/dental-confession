@@ -23,10 +23,6 @@
         }
         .nav-link:hover::after { width: 100%; }
         .nav-link:hover { color: white; }
-
-        /* Jaw Animation */
-        @keyframes floatJaw { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        .animate-float { animation: floatJaw 6s ease-in-out infinite; }
     </style>
 </head>
 <body>
@@ -76,26 +72,15 @@
             <a href="#technology" onclick="toggleMenu()" class="text-xl font-black text-white uppercase italic no-underline text-blue-400">Technology</a>
             <a href="#gallery" onclick="toggleMenu()" class="text-xl font-black text-white uppercase italic no-underline">Gallery</a>
             <hr class="border-white/10">
-            <a href="https://wa.me/923244404184" target="_blank" class="w-full text-center py-4 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full no-underline">Book Appointment</a>
+            <a href="https://wa.me/923244404184" target="_blank" class="w-full text-center py-4 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full no-underline shadow-lg shadow-blue-600/20">
+                Book Appointment
+            </a>
+            <a href="#contact" onclick="toggleMenu()" class="w-full text-center py-4 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full no-underline">
+                Contact Us
+            </a>
         </div>
     </div>
-    <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            const icon = document.getElementById('menuIcon');
-            sidebar.classList.toggle('translate-x-full');
-            overlay.classList.toggle('hidden');
-            
-            if (!sidebar.classList.contains('translate-x-full')) {
-                icon.classList.replace('fa-bars-staggered', 'fa-xmark');
-            } else {
-                icon.classList.replace('fa-xmark', 'fa-bars-staggered');
-            }
-        }
-    </script>
-</body>
-</html>
+
     <section id="home" class="relative min-h-screen flex items-center bg-[#050505] overflow-hidden pt-20 lg:pt-0">
     
     <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-20">
@@ -800,3 +785,22 @@
         text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
     }
 </style>
+        
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const icon = document.getElementById('menuIcon');
+            
+            sidebar.classList.toggle('translate-x-full');
+            overlay.classList.toggle('hidden');
+            
+            if (!sidebar.classList.contains('translate-x-full')) {
+                icon.classList.replace('fa-bars-staggered', 'fa-xmark');
+            } else {
+                icon.classList.replace('fa-xmark', 'fa-bars-staggered');
+            }
+        }
+    </script>
+</body>
+</html>
