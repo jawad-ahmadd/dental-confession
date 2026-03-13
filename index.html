@@ -766,5 +766,100 @@
             }
         }
     </script>
+    <a href="https://wa.me/923244404184" target="_blank" class="whatsapp-float group" title="Chat with us">
+    <div class="whatsapp-pulse"></div>
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-text">Chat with us</span>
+</a>
+
+<style>
+    .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        z-index: 1000;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none;
+        overflow: hidden;
+    }
+
+    .whatsapp-float i {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* WhatsApp Text that slides out on hover */
+    .whatsapp-text {
+        position: absolute;
+        right: 60px;
+        background-color: #25d366;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 0 0 0 20px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        border-radius: 50px 0 0 50px;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.4s ease;
+        pointer-events: none;
+    }
+
+    .whatsapp-float:hover {
+        width: 170px;
+        box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-float:hover .whatsapp-text {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Pulse Animation */
+    .whatsapp-pulse {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #25d366;
+        border-radius: 50%;
+        z-index: 1;
+        animation: waPulse 2s infinite;
+    }
+
+    @keyframes waPulse {
+        0% { transform: scale(1); opacity: 0.5; }
+        100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+        }
+        /* Mobile par slide text hide kar dete hain taake screen saaf rahe */
+        .whatsapp-float:hover {
+            width: 55px;
+        }
+        .whatsapp-text {
+            display: none;
+        }
+    }
+</style>
 </body>
 </html>
